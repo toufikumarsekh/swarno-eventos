@@ -1,0 +1,117 @@
+{% extends "base.html" %}
+
+{% block title %}{{ company.name }} | Swarno EventOS{% endblock %}
+
+{% block content %}
+<section class="dashboard">
+
+    <div class="dashboard-heading">
+        <div>
+            <p class="eyebrow">COMPANY WORKSPACE</p>
+            <h1>{{ company.name }}</h1>
+            <p>
+                {% if company.city %}{{ company.city }}{% endif %}
+                {% if company.city and company.state %}, {% endif %}
+                {% if company.state %}{{ company.state }}{% endif %}
+                {% if not company.city and not company.state %}Company dashboard{% endif %}
+            </p>
+        </div>
+        <span class="role-badge">{{ membership.get_role_display }}</span>
+    </div>
+
+    <div class="dashboard-grid">
+        <div class="dashboard-card">
+            <span>Company Status</span>
+            <h2>{% if company.is_active %}Active{% else %}Inactive{% endif %}</h2>
+        </div>
+
+        <div class="dashboard-card">
+            <span>Your Access Role</span>
+            <h2>{{ membership.get_role_display }}</h2>
+        </div>
+
+        <div class="dashboard-card">
+            <span>Active Team Members</span>
+            <h2>{{ member_count }}</h2>
+        </div>
+    </div>
+
+    <section class="dashboard-section">
+        <h2>Business Management</h2>
+        <p>Choose a workspace to manage a part of your event business.</p>
+
+        <div class="dashboard-modules">
+
+            <article class="dashboard-module">
+                <h3>Clients</h3>
+                <p>Store customer contact details, addresses and notes.</p>
+                <a href="{% url 'companies:clients:list' company.slug %}">Open Clients →</a>
+            </article>
+
+            <article class="dashboard-module">
+                <h3>Enquiries & Follow-ups</h3>
+                <p>Track new customer requests, event budgets and follow-ups.</p>
+                <a href="{% url 'companies:enquiries:list' company.slug %}">Open Enquiries →</a>
+            </article>
+
+            <article class="dashboard-module">
+                <h3>Events</h3>
+                <p>Plan event dates, venues, clients, schedules and status.</p>
+                <a href="{% url 'companies:events:list' company.slug %}">Open Events →</a>
+            </article>
+
+            <article class="dashboard-module">
+                <h3>Quotations</h3>
+                <p>Prepare estimates with services, quantities, discounts and taxes.</p>
+                <a href="{% url 'companies:quotations:list' company.slug %}">Open Quotations →</a>
+            </article>
+
+            <article class="dashboard-module">
+                <h3>Finance</h3>
+                <p>Record client payments, business expenses and outstanding balances.</p>
+                <a href="{% url 'companies:finance:dashboard' company.slug %}">Open Finance →</a>
+            </article>
+
+            <article class="dashboard-module">
+                <h3>Vendors & Inventory</h3>
+                <p>Vendor and equipment management will be added in a future stage.</p>
+                <span class="role-badge">Coming later</span>
+            </article>
+
+            <article class="dashboard-module">
+                <h3>Workforce</h3>
+                <p>Employee and event staff management is planned for a future stage.</p>
+                <span class="role-badge">Coming later</span>
+            </article>
+
+        </div>
+    </section>
+
+    <section class="dashboard-section">
+        <h2>Company Information</h2>
+        <div class="company-info">
+            <p><strong>Company Name:</strong> {{ company.name }}</p>
+            <p><strong>Legal Name:</strong> {{ company.legal_name|default:"Not provided" }}</p>
+            <p><strong>Email:</strong> {{ company.email|default:"Not provided" }}</p>
+            <p><strong>Phone:</strong> {{ company.phone|default:"Not provided" }}</p>
+            <p><strong>GSTIN:</strong> {{ company.gstin|default:"Not provided" }}</p>
+            <p><strong>Address:</strong> {{ company.address|default:"Not provided" }}</p>
+        </div>
+    </section>
+
+    <section class="dashboard-section">
+        <h2>Switch Company</h2>
+        <p>Choose another company workspace associated with your account.</p>
+        <div class="company-switcher">
+            {% for item in user_companies %}
+                <a href="{% url 'companies:dashboard' item.company.slug %}">
+                    {{ item.company.name }}
+                    {% if item.company_id == company.id %} · Current{% endif %}
+                </a>
+            {% endfor %}
+            <a href="{% url 'companies:register' %}">+ Register another company</a>
+        </div>
+    </section>
+
+</section>
+{% endblock %}

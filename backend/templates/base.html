@@ -1,0 +1,136 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#17243a">
+
+    <script>
+        (function () {
+            try {
+                const savedTheme = localStorage.getItem("swarno-theme") || "light";
+                document.documentElement.setAttribute("data-theme", savedTheme);
+            } catch (error) {
+                document.documentElement.setAttribute("data-theme", "light");
+            }
+        })();
+    </script>
+    <title>{% block title %}Swarno EventOS{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+
+<header class="site-header">
+    <div class="header-inner">
+        <a href="/" class="brand">
+            <span class="brand-mark">S</span>
+            <span>SWARNO <small>EventOS</small></span>
+        </a>
+
+        <nav class="top-nav">
+            {% if request.user.is_authenticated %}
+                <a href="{% url 'companies:list' %}">My Companies</a>
+                <a href="{% url 'companies:register' %}">Add Company</a>
+                <span class="user-email">{{ request.user.email }}</span>
+                <form method="post" action="{% url 'accounts:logout' %}">
+                    {% csrf_token %}
+                    <button type="submit" class="nav-logout">Logout</button>
+                </form>
+            {% else %}
+                <a href="{% url 'accounts:login' %}">Login</a>
+                <a class="nav-register" href="{% url 'companies:register' %}">Register Company</a>
+            {% endif %}
+
+            <button type="button" class="theme-toggle" id="theme-toggle"
+                    aria-label="Switch theme" title="Switch theme">
+                <span class="theme-icon">☾</span>
+                <span class="theme-label">Dark mode</span>
+            </button>
+        </nav>
+    </div>
+</header>
+
+<main class="site-main">
+    {% if messages %}
+        <div class="messages">
+            {% for message in messages %}
+                <div class="message {{ message.tags }}">{{ message }}</div>
+            {% endfor %}
+        </div>
+    {% endif %}
+
+    {% block content %}
+    <section class="welcome">
+        <p class="eyebrow">EVENT MANAGEMENT PLATFORM</p>
+        <h1>Everything for your events, in one workspace.</h1>
+        <p>Manage clients, enquiries, events, quotations and finances with Swarno EventOS.</p>
+        <div class="welcome-actions">
+            <a href="{% url 'companies:register' %}" class="button">Create Company Workspace</a>
+            <a href="{% url 'accounts:login' %}" class="button button-secondary">Sign In</a>
+        </div>
+    </section>
+
+    <section class="modules">
+        <article class="module"><strong>Clients</strong><span>Customer records</span></article>
+        <article class="module"><strong>Enquiries</strong><span>Lead management</span></article>
+        <article class="module"><strong>Events</strong><span>Event planning</span></article>
+        <article class="module"><strong>Quotations</strong><span>Estimates and pricing</span></article>
+        <article class="module"><strong>Finance</strong><span>Payments and expenses</span></article>
+        <article class="module"><strong>Vendors</strong><span>Coming in a future release</span></article>
+    </section>
+    {% endblock %}
+</main>
+
+<footer class="site-footer">
+    <span>Swarno EventOS</span>
+    <span>Event Management Workspace · 2026</span>
+</footer>
+
+
+<script>
+(function () {
+    const button = document.getElementById("theme-toggle");
+    if (!button) return;
+
+    const root = document.documentElement;
+    const icon = button.querySelector(".theme-icon");
+    const label = button.querySelector(".theme-label");
+    const themeMeta = document.querySelector('meta[name="theme-color"]');
+
+    function applyTheme(theme) {
+        root.setAttribute("data-theme", theme);
+
+        const isDark = theme === "dark";
+        icon.textContent = isDark ? "☀" : "☾";
+        label.textContent = isDark ? "Light mode" : "Dark mode";
+        button.setAttribute(
+            "aria-label",
+            isDark ? "Switch to light theme" : "Switch to dark theme"
+        );
+        button.title = isDark ? "Switch to light theme" : "Switch to dark theme";
+
+        if (themeMeta) {
+            themeMeta.setAttribute("content", isDark ? "#0b1220" : "#17243a");
+        }
+    }
+
+    applyTheme(root.getAttribute("data-theme") || "light");
+
+    button.addEventListener("click", function () {
+        const currentTheme = root.getAttribute("data-theme") || "light";
+        const nextTheme = currentTheme === "dark" ? "light" : "dark";
+
+        applyTheme(nextTheme);
+
+        try {
+            localStorage.setItem("swarno-theme", nextTheme);
+        } catch (error) {
+            // Theme still works for the current page.
+        }
+    });
+})();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="crm-page crm-form-page">
+    <p class="eyebrow">{{ company.name }} / {{ enquiry.title }}</p>
+    <h1>Schedule Follow-up</h1>
+    <form method="post" class="crm-form">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Save Follow-up</button>
+        <a href="{% url 'companies:enquiries:detail' company.slug enquiry.pk %}">Cancel</a>
+    </form>
+</section>
+{% endblock %}

@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="page-header">
+    <div>
+        <p class="eyebrow">{{ company.name }} / FINANCE</p>
+        <h1>Payment {{ payment.receipt_number }}</h1>
+        <p>Payment record and transaction information.</p>
+    </div>
+    <span class="role-badge">{{ payment.get_status_display }}</span>
+</div>
+
+<section class="content-card">
+    <h2>Payment Information</h2>
+    <p><strong>Receipt:</strong> {{ payment.receipt_number }}</p>
+    <p><strong>Client:</strong> {{ payment.client.name }}</p>
+    <p><strong>Event:</strong> {{ payment.event|default:"—" }}</p>
+    <p><strong>Quotation:</strong> {{ payment.quotation|default:"—" }}</p>
+    <p><strong>Payment Type:</strong> {{ payment.get_payment_type_display }}</p>
+    <p><strong>Amount:</strong> ₹{{ payment.amount|floatformat:2 }}</p>
+    <p><strong>Date:</strong> {{ payment.payment_date }}</p>
+    <p><strong>Method:</strong> {{ payment.get_method_display }}</p>
+    <p><strong>Transaction Reference:</strong> {{ payment.transaction_reference|default:"—" }}</p>
+    <p><strong>Notes:</strong> {{ payment.notes|default:"—" }}</p>
+    <p><strong>Created By:</strong> {{ payment.created_by|default:"—" }}</p>
+    <p><strong>Posted At:</strong> {{ payment.posted_at|default:"—" }}</p>
+
+    {% if payment.status == "void" %}
+        <hr>
+        <h3>Void Information</h3>
+        <p><strong>Reason:</strong> {{ payment.void_reason }}</p>
+        <p><strong>Voided At:</strong> {{ payment.voided_at }}</p>
+    {% endif %}
+</section>
+
+{% if payment.status == "posted" %}
+<section class="content-card">
+    <h2>Void Payment</h2>
+    <p>This will exclude the payment from financial totals. The record will remain saved.</p>
+    <form method="post" action="{% url 'companies:finance:payment_void' company.slug payment.pk %}">
+        {% csrf_token %}
+        {{ void_form.as_p }}
+        <button type="submit" onclick="return confirm('Are you sure you want to void this payment?');">
+            Void Payment
+        </button>
+    </form>
+</section>
+{% endif %}
+
+<p>
+    <a href="{% url 'companies:finance:payments' company.slug %}">← Back to Payments</a>
+    ·
+    <a href="{% url 'companies:finance:dashboard' company.slug %}">Finance Dashboard</a>
+</p>
+{% endblock %}

@@ -1,0 +1,97 @@
+.
+├── backend
+│   ├── apps
+│   │   ├── accounts
+│   │   │   └── __init__.py
+│   │   ├── audit
+│   │   │   └── __init__.py
+│   │   ├── clients
+│   │   │   └── __init__.py
+│   │   ├── companies
+│   │   │   └── __init__.py
+│   │   ├── core
+│   │   │   └── __init__.py
+│   │   ├── documents
+│   │   │   └── __init__.py
+│   │   ├── enquiries
+│   │   │   └── __init__.py
+│   │   ├── events
+│   │   │   └── __init__.py
+│   │   ├── finance
+│   │   │   └── __init__.py
+│   │   ├── __init__.py
+│   │   ├── inventory
+│   │   │   └── __init__.py
+│   │   ├── notifications
+│   │   │   └── __init__.py
+│   │   ├── quotations
+│   │   │   └── __init__.py
+│   │   ├── reports
+│   │   │   └── __init__.py
+│   │   ├── vendors
+│   │   │   └── __init__.py
+│   │   └── workforce
+│   │       └── __init__.py
+│   ├── config
+│   │   ├── asgi.py
+│   │   ├── __init__.py
+│   │   ├── settings.py
+│   │   ├── urls.py
+│   │   └── wsgi.py
+│   ├── static
+│   │   ├── css
+│   │   │   └── style.css
+│   │   ├── icons
+│   │   ├── images
+│   │   └── js
+│   │       └── app.js
+│   ├── templates
+│   │   ├── accounts
+│   │   ├── base.html
+│   │   ├── clients
+│   │   ├── dashboard
+│   │   ├── errors
+│   │   ├── events
+│   │   ├── finance
+│   │   ├── inventory
+│   │   ├── quotations
+│   │   └── vendors
+│   └── tests
+├── database
+│   ├── backups
+│   ├── schema
+│   └── seeds
+├── docs
+│   ├── API_DOCUMENTATION.md
+│   ├── CHANGELOG.md
+│   ├── DATABASE_DESIGN.md
+│   ├── DECISIONS.md
+│   ├── DEVELOPMENT_ROADMAP.md
+│   ├── FOLDER_STRUCTURE.txt
+│   ├── PROJECT_OVERVIEW.md
+│   ├── REQUIREMENTS.md
+│   ├── SYSTEM_ARCHITECTURE.md
+│   └── USER_ROLES_AND_PERMISSIONS.md
+├── .env
+├── .env.example
+├── frontend
+│   ├── assets
+│   ├── components
+│   ├── css
+│   ├── js
+│   ├── layouts
+│   └── pages
+├── .gitignore
+├── PROJECT_CONTEXT.md
+├── README.md
+├── requirements.txt
+├── scripts
+│   ├── backup.sh
+│   ├── run.sh
+│   └── setup.sh
+└── tests
+    ├── integration
+    ├── security
+    └── system
+
+52 directories, 43 files

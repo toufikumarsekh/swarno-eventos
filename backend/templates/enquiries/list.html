@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="crm-page">
+    <div class="crm-heading">
+        <div><p class="eyebrow">{{ company.name }} / CRM</p><h1>Enquiries</h1><p>Track potential events and customer requests.</p></div>
+        <a class="button" href="{% url 'companies:enquiries:create' company.slug %}">+ New Enquiry</a>
+    </div>
+    <form method="get" class="crm-search">
+        <select name="status">
+            <option value="">All statuses</option>
+            {% for value,label in statuses %}
+            <option value="{{ value }}" {% if selected_status == value %}selected{% endif %}>{{ label }}</option>
+            {% endfor %}
+        </select>
+        <button type="submit">Filter</button>
+        <a href="{% url 'companies:enquiries:list' company.slug %}">Clear</a>
+    </form>
+    <div class="crm-table-wrap">
+        <table class="crm-table">
+            <thead><tr><th>Enquiry</th><th>Client</th><th>Event Type</th><th>Event Date</th><th>Budget</th><th>Status</th></tr></thead>
+            <tbody>
+            {% for enquiry in enquiries %}
+                <tr>
+                    <td><a href="{% url 'companies:enquiries:detail' company.slug enquiry.pk %}">{{ enquiry.title }}</a></td>
+                    <td>{{ enquiry.client.name }}</td>
+                    <td>{{ enquiry.event_type }}</td>
+                    <td>{{ enquiry.event_date|default:"—" }}</td>
+                    <td>{% if enquiry.budget %}₹{{ enquiry.budget }}{% else %}—{% endif %}</td>
+                    <td>{{ enquiry.get_status_display }}</td>
+                </tr>
+            {% empty %}
+                <tr><td colspan="6">No enquiries found. Create your first enquiry.</td></tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    <p><a href="{% url 'companies:dashboard' company.slug %}">← Back to Dashboard</a></p>
+</section>
+{% endblock %}

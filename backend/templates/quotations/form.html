@@ -1,0 +1,99 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="page-header">
+    <div>
+        <h1>{{ page_title }}</h1>
+        <p>{{ company.name }}</p>
+    </div>
+    <a href="{% url 'companies:quotations:list' company.slug %}">Back to Quotations</a>
+</div>
+
+<form method="post" class="form-card quotation-form">
+    {% csrf_token %}
+
+    {% if form.errors or formset.errors %}
+    <div class="form-errors">
+        Please correct the errors below before saving.
+        {{ form.non_field_errors }}
+        {{ formset.non_form_errors }}
+    </div>
+    {% endif %}
+
+    <h2>Quotation Information</h2>
+    {% for field in form %}
+    <div class="form-group">
+        <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+        {{ field }}
+        {% if field.help_text %}<small>{{ field.help_text }}</small>{% endif %}
+        {% for error in field.errors %}<small class="field-error">{{ error }}</small>{% endfor %}
+    </div>
+    {% endfor %}
+
+    <div class="quotation-items-section">
+        <h2>Quotation Items</h2>
+        <p>Add each service or product as a separate line.</p>
+
+        {{ formset.management_form }}
+        {% if formset.non_form_errors %}
+            <div class="form-errors">{{ formset.non_form_errors }}</div>
+        {% endif %}
+
+        <div id="quotation-items">
+            {% for item_form in formset %}
+            <div class="quotation-item-row">
+                {{ item_form.id }}
+                <div class="item-fields">
+                    {% for field in item_form.visible_fields %}
+                    <div class="form-group">
+                        <label>{{ field.label }}</label>
+                        {{ field }}
+                        {% for error in field.errors %}<small class="field-error">{{ error }}</small>{% endfor %}
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+
+        <template id="empty-item-form">
+            <div class="quotation-item-row">
+                {{ formset.empty_form.id }}
+                <div class="item-fields">
+                    {% for field in formset.empty_form.visible_fields %}
+                    <div class="form-group">
+                        <label>{{ field.label }}</label>
+                        {{ field }}
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </template>
+
+        <button type="button" class="btn btn-secondary" id="add-quotation-item">+ Add another item</button>
+    </div>
+
+    <div class="form-actions">
+        <button type="submit" class="btn btn-primary">Save Quotation</button>
+        <a href="{% url 'companies:quotations:list' company.slug %}">Cancel</a>
+    </div>
+</form>
+
+<script>
+(function () {
+    const addButton = document.getElementById("add-quotation-item");
+    const container = document.getElementById("quotation-items");
+    const totalForms = document.getElementById("id_items-TOTAL_FORMS");
+    const template = document.getElementById("empty-item-form");
+
+    if (!addButton || !container || !totalForms || !template) return;
+
+    addButton.addEventListener("click", function () {
+        const index = Number(totalForms.value);
+        const html = template.innerHTML.replace(/__prefix__/g, index);
+        container.insertAdjacentHTML("beforeend", html);
+        totalForms.value = index + 1;
+    });
+})();
+</script>
+{% endblock %}

@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="form-container">
+    <p class="eyebrow">{{ company.name }} / FINANCE</p>
+    <h1>Record Client Payment</h1>
+    <p>This entry will be posted immediately and included in financial totals.</p>
+
+    <form method="post" class="standard-form">
+        {% csrf_token %}
+        {{ form.non_field_errors }}
+        {% for field in form %}
+            <div class="form-field">
+                <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+                {{ field }}
+                {{ field.errors }}
+            </div>
+        {% endfor %}
+        <button type="submit" class="button">Save Payment</button>
+        <a href="{% url 'companies:finance:payments' company.slug %}">Cancel</a>
+    </form>
+</div>
+{% endblock %}

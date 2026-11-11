@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="crm-page">
+    <p class="eyebrow">{{ company.name }} / ENQUIRIES</p>
+    <div class="crm-heading">
+        <div><h1>{{ enquiry.title }}</h1><p>{{ enquiry.get_status_display }} · {{ enquiry.event_type }}</p></div>
+        <a class="button" href="{% url 'companies:enquiries:edit' company.slug enquiry.pk %}">Edit Enquiry</a>
+    </div>
+    <div class="crm-detail-card">
+        <p><strong>Client:</strong> <a href="{% url 'companies:clients:detail' company.slug enquiry.client.pk %}">{{ enquiry.client.name }}</a></p>
+        <p><strong>Phone:</strong> {{ enquiry.client.phone }}</p>
+        <p><strong>Event date:</strong> {{ enquiry.event_date|default:"Not set" }}</p>
+        <p><strong>Guests:</strong> {{ enquiry.guest_count }}</p>
+        <p><strong>Venue:</strong> {{ enquiry.venue|default:"Not decided" }}</p>
+        <p><strong>Budget:</strong> {% if enquiry.budget %}₹{{ enquiry.budget }}{% else %}Not specified{% endif %}</p>
+        <p><strong>Source:</strong> {{ enquiry.source|default:"Not specified" }}</p>
+        <p><strong>Description:</strong> {{ enquiry.description|default:"—" }}</p>
+    </div>
+
+    <div class="crm-heading">
+        <h2>Follow-ups</h2>
+        <a class="button" href="{% url 'companies:enquiries:followup_create' company.slug enquiry.pk %}">+ Schedule Follow-up</a>
+    </div>
+    <div class="crm-table-wrap">
+        <table class="crm-table">
+            <thead><tr><th>Scheduled</th><th>Note</th><th>Outcome</th><th>Status</th></tr></thead>
+            <tbody>
+            {% for item in followups %}
+                <tr><td>{{ item.scheduled_at }}</td><td>{{ item.note }}</td><td>{{ item.outcome|default:"—" }}</td><td>{% if item.is_completed %}Completed{% else %}Pending{% endif %}</td></tr>
+            {% empty %}
+                <tr><td colspan="4">No follow-ups scheduled.</td></tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    <p><a href="{% url 'companies:enquiries:list' company.slug %}">← Back to Enquiries</a></p>
+</section>
+{% endblock %}

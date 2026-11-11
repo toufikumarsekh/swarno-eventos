@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="detail-container">
+    <div class="page-header">
+        <div>
+            <h1>{{ event.title }}</h1>
+            <p>{{ event.get_event_type_display }} · {{ event.get_status_display }}</p>
+        </div>
+        <a class="button" href="{% url 'companies:events:edit' company.slug event.pk %}">Edit Event</a>
+    </div>
+
+    <div class="detail-card">
+        <p><strong>Client:</strong> {{ event.client.name }}</p>
+        <p><strong>Enquiry:</strong>
+            {% if event.enquiry %}
+                {{ event.enquiry.title }}
+            {% else %}
+                —
+            {% endif %}
+        </p>
+        <p><strong>Date:</strong> {{ event.event_date|date:"d M Y" }}</p>
+        <p><strong>Time:</strong>
+            {{ event.start_time|default:"Not set" }}
+            {% if event.end_time %} – {{ event.end_time }}{% endif %}
+        </p>
+        <p><strong>Venue:</strong> {{ event.venue|default:"Not set" }}</p>
+        <p><strong>Guest count:</strong> {{ event.guest_count }}</p>
+        <p><strong>Budget:</strong>
+            {% if event.budget %}₹{{ event.budget }}{% else %}Not set{% endif %}
+        </p>
+        <p><strong>Description:</strong> {{ event.description|default:"—"|linebreaksbr }}</p>
+        <p><strong>Notes:</strong> {{ event.notes|default:"—"|linebreaksbr }}</p>
+    </div>
+
+    <p><a href="{% url 'companies:events:list' company.slug %}">← Back to Events</a></p>
+</section>
+{% endblock %}

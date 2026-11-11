@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="company-list-page">
+    <div class="page-heading">
+        <div>
+            <p class="eyebrow">YOUR WORKSPACE</p>
+            <h1>My Companies</h1>
+            <p>Select a company to open its EventOS dashboard.</p>
+        </div>
+        <a class="button" href="{% url 'companies:register' %}">+ Add Company</a>
+    </div>
+
+    <div class="company-list-grid">
+        {% for item in memberships %}
+        <article class="company-list-card">
+            <div class="company-avatar">{{ item.company.name|first|upper }}</div>
+            <h2>{{ item.company.name }}</h2>
+            <p>{{ item.company.city }}{% if item.company.state %}, {{ item.company.state }}{% endif %}</p>
+            <p class="company-role">{{ item.get_role_display }}</p>
+            <a class="button" href="{% url 'companies:dashboard' item.company.slug %}">
+                Open Dashboard →
+            </a>
+        </article>
+        {% empty %}
+        <div class="empty-companies">
+            <h2>No company workspace found</h2>
+            <p>Create a company workspace to start managing your events.</p>
+            <a class="button" href="{% url 'companies:register' %}">Register Your Company</a>
+        </div>
+        {% endfor %}
+    </div>
+</section>
+{% endblock %}

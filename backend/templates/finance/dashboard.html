@@ -1,0 +1,76 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="page-header">
+    <div>
+        <p class="eyebrow">{{ company.name }} / FINANCE</p>
+        <h1>Finance Dashboard</h1>
+        <p>Track client payments, business expenses and outstanding quotations.</p>
+    </div>
+</div>
+
+<div class="finance-stats">
+    <div class="finance-stat">
+        <span>Total Received</span>
+        <h2>₹{{ total_income|floatformat:2 }}</h2>
+    </div>
+    <div class="finance-stat">
+        <span>Total Expenses</span>
+        <h2>₹{{ total_expenses|floatformat:2 }}</h2>
+    </div>
+    <div class="finance-stat">
+        <span>Net Cash Flow</span>
+        <h2>₹{{ net_cash|floatformat:2 }}</h2>
+    </div>
+    <div class="finance-stat">
+        <span>Accepted Quotation Balance</span>
+        <h2>₹{{ outstanding|floatformat:2 }}</h2>
+    </div>
+</div>
+
+<div class="finance-actions">
+    <a class="button" href="{% url 'companies:finance:payment_create' company.slug %}">+ Record Payment</a>
+    <a class="button" href="{% url 'companies:finance:expense_create' company.slug %}">+ Add Expense</a>
+    <a class="button" href="{% url 'companies:finance:payments' company.slug %}">All Payments</a>
+    <a class="button" href="{% url 'companies:finance:expenses' company.slug %}">All Expenses</a>
+</div>
+
+<div class="finance-columns">
+    <section class="content-card">
+        <h2>Recent Payments</h2>
+        {% for payment in recent_payments %}
+            <div class="finance-row">
+                <div>
+                    <strong>{{ payment.receipt_number }}</strong>
+                    <p>{{ payment.client.name }} · {{ payment.payment_date }}</p>
+                </div>
+                <strong>₹{{ payment.amount|floatformat:2 }}</strong>
+            </div>
+        {% empty %}
+            <p>No posted payments yet.</p>
+        {% endfor %}
+        <a href="{% url 'companies:finance:payments' company.slug %}">View all payments →</a>
+    </section>
+
+    <section class="content-card">
+        <h2>Recent Expenses</h2>
+        {% for expense in recent_expenses %}
+            <div class="finance-row">
+                <div>
+                    <strong>{{ expense.expense_number }}</strong>
+                    <p>{{ expense.title }} · {{ expense.expense_date }}</p>
+                </div>
+                <strong>₹{{ expense.amount|floatformat:2 }}</strong>
+            </div>
+        {% empty %}
+            <p>No posted expenses yet.</p>
+        {% endfor %}
+        <a href="{% url 'companies:finance:expenses' company.slug %}">View all expenses →</a>
+    </section>
+</div>
+
+<p class="finance-note">
+    Dashboard totals include posted transactions only. Outstanding balance is calculated
+    from accepted quotations less payments linked to those quotations.
+</p>
+{% endblock %}

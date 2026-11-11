@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="company-registration">
+    <h1>Register Your Company</h1>
+    <p>Create your company workspace in Swarno EventOS.</p>
+
+    <form method="post">
+        {% csrf_token %}
+
+        {{ form.as_p }}
+
+        <button type="submit">Create Company</button>
+    </form>
+</section>
+{% endblock %}

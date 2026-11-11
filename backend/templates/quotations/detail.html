@@ -1,0 +1,83 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="page-header">
+    <div>
+        <h1>{{ quotation.title }}</h1>
+        <p>{{ quotation.number }} · Version {{ quotation.version }}</p>
+    </div>
+    <div>
+        {% if quotation.status == "draft" %}
+        <a class="btn btn-primary" href="{% url 'companies:quotations:edit' company.slug quotation.pk %}">Edit Quotation</a>
+        {% endif %}
+        <a href="{% url 'companies:quotations:list' company.slug %}">Back to Quotations</a>
+    </div>
+</div>
+
+<div class="detail-card">
+    <h2>Quotation Details</h2>
+    <div class="detail-grid">
+        <p><strong>Quotation No:</strong> {{ quotation.number }}</p>
+        <p><strong>Status:</strong> {{ quotation.get_status_display }}</p>
+        <p><strong>Client:</strong> {{ quotation.client.name }}</p>
+        <p><strong>Event:</strong> {{ quotation.event.title|default:"Not linked" }}</p>
+        <p><strong>Issue Date:</strong> {{ quotation.issue_date|date:"d M Y" }}</p>
+        <p><strong>Valid Until:</strong> {{ quotation.valid_until|date:"d M Y"|default:"Not specified" }}</p>
+    </div>
+</div>
+
+<div class="detail-card">
+    <h2>Items</h2>
+    <div class="table-container">
+    <table class="data-table">
+        <thead>
+            <tr>
+                <th>Description</th>
+                <th>Qty</th>
+                <th>Unit</th>
+                <th>Unit Price</th>
+                <th>Discount</th>
+                <th>Tax</th>
+                <th>Total</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in quotation.items.all %}
+            <tr>
+                <td>{{ item.description }}</td>
+                <td>{{ item.quantity|floatformat:2 }}</td>
+                <td>{{ item.unit }}</td>
+                <td>₹{{ item.unit_price|floatformat:2 }}</td>
+                <td>₹{{ item.discount_amount|floatformat:2 }}</td>
+                <td>₹{{ item.tax_amount|floatformat:2 }}</td>
+                <td>₹{{ item.total_amount|floatformat:2 }}</td>
+            </tr>
+            {% empty %}
+            <tr><td colspan="7">No items.</td></tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    </div>
+
+    <div class="quotation-totals">
+        <p>Subtotal: <strong>₹{{ quotation.subtotal|floatformat:2 }}</strong></p>
+        <p>Discount: <strong>₹{{ quotation.discount_total|floatformat:2 }}</strong></p>
+        <p>Tax: <strong>₹{{ quotation.tax_total|floatformat:2 }}</strong></p>
+        <h2>Grand Total: ₹{{ quotation.grand_total|floatformat:2 }}</h2>
+    </div>
+</div>
+
+{% if quotation.terms_and_conditions %}
+<div class="detail-card">
+    <h2>Terms and Conditions</h2>
+    <p>{{ quotation.terms_and_conditions|linebreaksbr }}</p>
+</div>
+{% endif %}
+
+{% if quotation.notes %}
+<div class="detail-card">
+    <h2>Notes</h2>
+    <p>{{ quotation.notes|linebreaksbr }}</p>
+</div>
+{% endif %}
+{% endblock %}

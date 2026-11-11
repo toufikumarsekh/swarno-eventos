@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="crm-page">
+    <div class="crm-heading">
+        <div>
+            <p class="eyebrow">{{ company.name }} / CRM</p>
+            <h1>Clients</h1>
+            <p>Manage your company's customers and contacts.</p>
+        </div>
+        <a class="button" href="{% url 'companies:clients:create' company.slug %}">+ Add Client</a>
+    </div>
+
+    <form method="get" class="crm-search">
+        <input type="search" name="q" value="{{ query }}" placeholder="Search by name or phone">
+        <button type="submit">Search</button>
+        <a href="{% url 'companies:clients:list' company.slug %}">Clear</a>
+    </form>
+
+    <div class="crm-table-wrap">
+        <table class="crm-table">
+            <thead><tr><th>Client</th><th>Phone</th><th>Email</th><th>City</th><th>Action</th></tr></thead>
+            <tbody>
+            {% for client in clients %}
+                <tr>
+                    <td>{{ client.name }}</td>
+                    <td>{{ client.phone }}</td>
+                    <td>{{ client.email|default:"—" }}</td>
+                    <td>{{ client.city|default:"—" }}</td>
+                    <td><a href="{% url 'companies:clients:detail' company.slug client.pk %}">View</a></td>
+                </tr>
+            {% empty %}
+                <tr><td colspan="5">No clients found. Add your first client.</td></tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    <p><a href="{% url 'companies:dashboard' company.slug %}">← Back to Dashboard</a></p>
+</section>
+{% endblock %}

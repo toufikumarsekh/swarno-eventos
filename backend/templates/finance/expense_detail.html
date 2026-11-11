@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="page-header">
+    <div>
+        <p class="eyebrow">{{ company.name }} / FINANCE</p>
+        <h1>Expense {{ expense.expense_number }}</h1>
+        <p>Expense record and transaction information.</p>
+    </div>
+    <span class="role-badge">{{ expense.get_status_display }}</span>
+</div>
+
+<section class="content-card">
+    <h2>Expense Information</h2>
+    <p><strong>Expense Number:</strong> {{ expense.expense_number }}</p>
+    <p><strong>Title:</strong> {{ expense.title }}</p>
+    <p><strong>Category:</strong> {{ expense.get_category_display }}</p>
+    <p><strong>Payee:</strong> {{ expense.payee|default:"—" }}</p>
+    <p><strong>Event:</strong> {{ expense.event|default:"—" }}</p>
+    <p><strong>Amount:</strong> ₹{{ expense.amount|floatformat:2 }}</p>
+    <p><strong>Date:</strong> {{ expense.expense_date }}</p>
+    <p><strong>Method:</strong> {{ expense.get_method_display }}</p>
+    <p><strong>Transaction Reference:</strong> {{ expense.transaction_reference|default:"—" }}</p>
+    <p><strong>Description:</strong> {{ expense.description|default:"—" }}</p>
+    <p><strong>Created By:</strong> {{ expense.created_by|default:"—" }}</p>
+    <p><strong>Posted At:</strong> {{ expense.posted_at|default:"—" }}</p>
+
+    {% if expense.status == "void" %}
+        <hr>
+        <h3>Void Information</h3>
+        <p><strong>Reason:</strong> {{ expense.void_reason }}</p>
+        <p><strong>Voided At:</strong> {{ expense.voided_at }}</p>
+    {% endif %}
+</section>
+
+{% if expense.status == "posted" %}
+<section class="content-card">
+    <h2>Void Expense</h2>
+    <p>This will exclude the expense from financial totals. The record will remain saved.</p>
+    <form method="post" action="{% url 'companies:finance:expense_void' company.slug expense.pk %}">
+        {% csrf_token %}
+        {{ void_form.as_p }}
+        <button type="submit" onclick="return confirm('Are you sure you want to void this expense?');">
+            Void Expense
+        </button>
+    </form>
+</section>
+{% endif %}
+
+<p>
+    <a href="{% url 'companies:finance:expenses' company.slug %}">← Back to Expenses</a>
+    ·
+    <a href="{% url 'companies:finance:dashboard' company.slug %}">Finance Dashboard</a>
+</p>
+{% endblock %}

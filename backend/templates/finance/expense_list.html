@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="page-header">
+    <div>
+        <p class="eyebrow">{{ company.name }} / FINANCE</p>
+        <h1>Business Expenses</h1>
+        <p>Track event and operational expenses.</p>
+    </div>
+    <a class="button" href="{% url 'companies:finance:expense_create' company.slug %}">+ Add Expense</a>
+</div>
+
+<div class="table-wrapper">
+<table>
+    <thead>
+        <tr>
+            <th>Expense No.</th>
+            <th>Title</th>
+            <th>Category</th>
+            <th>Payee</th>
+            <th>Event</th>
+            <th>Date</th>
+            <th>Amount</th>
+            <th>Status</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for expense in expenses %}
+        <tr>
+            <td><a href="{% url 'companies:finance:expense_detail' company.slug expense.pk %}">{{ expense.expense_number }}</a></td>
+            <td>{{ expense.title }}</td>
+            <td>{{ expense.get_category_display }}</td>
+            <td>{{ expense.payee|default:"—" }}</td>
+            <td>{{ expense.event|default:"—" }}</td>
+            <td>{{ expense.expense_date }}</td>
+            <td>₹{{ expense.amount|floatformat:2 }}</td>
+            <td>{{ expense.get_status_display }}</td>
+        </tr>
+        {% empty %}
+        <tr><td colspan="8">No expenses recorded yet.</td></tr>
+        {% endfor %}
+    </tbody>
+</table>
+</div>
+
+<p><a href="{% url 'companies:finance:dashboard' company.slug %}">← Back to Finance</a></p>
+{% endblock %}

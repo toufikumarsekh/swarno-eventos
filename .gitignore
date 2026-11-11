@@ -1,0 +1,53 @@
+# Environment variables and secrets
+.env
+.env.*
+!.env.example
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# Local databases and logs
+*.sqlite3
+*.db
+*.log
+
+# Django generated files
+staticfiles/
+media/
+uploads/
+
+# IDE and operating system
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db
+
+# Build artifacts
+build/
+dist/
+*.egg-info/
+
+# Local backup files
+*.bak
+*.before_custom_user
+
+# Local backup files
+*.bak
+*.before_custom_user
+
+# Unrelated local file
+/backend/PaymentAdmin.java

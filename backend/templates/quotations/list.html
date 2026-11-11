@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="page-header">
+    <div>
+        <h1>Quotations</h1>
+        <p>{{ company.name }} — Manage client quotations</p>
+    </div>
+    <a class="btn btn-primary" href="{% url 'companies:quotations:create' company.slug %}">+ Create Quotation</a>
+</div>
+
+<form method="get" class="filter-bar">
+    <input type="text" name="q" value="{{ query }}" placeholder="Search quotation, client or title">
+    <select name="status">
+        <option value="">All statuses</option>
+        {% for value, label in statuses %}
+        <option value="{{ value }}" {% if selected_status == value %}selected{% endif %}>{{ label }}</option>
+        {% endfor %}
+    </select>
+    <button type="submit" class="btn btn-secondary">Filter</button>
+    <a href="{% url 'companies:quotations:list' company.slug %}">Clear</a>
+</form>
+
+<div class="table-container">
+<table class="data-table">
+    <thead>
+        <tr>
+            <th>Quotation No.</th>
+            <th>Title</th>
+            <th>Client</th>
+            <th>Issue Date</th>
+            <th>Status</th>
+            <th>Amount</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for quotation in quotations %}
+        <tr>
+            <td>{{ quotation.number }}</td>
+            <td>{{ quotation.title }}</td>
+            <td>{{ quotation.client.name }}</td>
+            <td>{{ quotation.issue_date|date:"d M Y" }}</td>
+            <td>{{ quotation.get_status_display }}</td>
+            <td>₹{{ quotation.grand_total|floatformat:2 }}</td>
+            <td><a href="{% url 'companies:quotations:detail' company.slug quotation.pk %}">View</a></td>
+        </tr>
+        {% empty %}
+        <tr><td colspan="7">No quotations created yet.</td></tr>
+        {% endfor %}
+    </tbody>
+</table>
+</div>
+{% endblock %}

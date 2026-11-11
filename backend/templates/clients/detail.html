@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="crm-page">
+    <p class="eyebrow">{{ company.name }} / CLIENTS</p>
+    <div class="crm-heading">
+        <div><h1>{{ client.name }}</h1><p>{{ client.phone }} · {{ client.email|default:"No email" }}</p></div>
+        <a class="button" href="{% url 'companies:clients:edit' company.slug client.pk %}">Edit Client</a>
+    </div>
+    <div class="crm-detail-card">
+        <p><strong>Alternate phone:</strong> {{ client.alternate_phone|default:"—" }}</p>
+        <p><strong>City:</strong> {{ client.city|default:"—" }}</p>
+        <p><strong>Address:</strong> {{ client.address|default:"—" }}</p>
+        <p><strong>Notes:</strong> {{ client.notes|default:"—" }}</p>
+    </div>
+    <h2>Enquiries from this client</h2>
+    <ul>
+    {% for enquiry in client.enquiries.all %}
+        <li><a href="{% url 'companies:enquiries:detail' company.slug enquiry.pk %}">{{ enquiry.title }}</a> — {{ enquiry.get_status_display }}</li>
+    {% empty %}
+        <li>No enquiries recorded yet.</li>
+    {% endfor %}
+    </ul>
+    <p><a href="{% url 'companies:clients:list' company.slug %}">← Back to Clients</a></p>
+</section>
+{% endblock %}
