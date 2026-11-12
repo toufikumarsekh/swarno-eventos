@@ -1,97 +1,742 @@
-.
-├── backend
-│   ├── apps
-│   │   ├── accounts
-│   │   │   └── __init__.py
-│   │   ├── audit
-│   │   │   └── __init__.py
-│   │   ├── clients
-│   │   │   └── __init__.py
-│   │   ├── companies
-│   │   │   └── __init__.py
-│   │   ├── core
-│   │   │   └── __init__.py
-│   │   ├── documents
-│   │   │   └── __init__.py
-│   │   ├── enquiries
-│   │   │   └── __init__.py
-│   │   ├── events
-│   │   │   └── __init__.py
-│   │   ├── finance
-│   │   │   └── __init__.py
-│   │   ├── __init__.py
-│   │   ├── inventory
-│   │   │   └── __init__.py
-│   │   ├── notifications
-│   │   │   └── __init__.py
-│   │   ├── quotations
-│   │   │   └── __init__.py
-│   │   ├── reports
-│   │   │   └── __init__.py
-│   │   ├── vendors
-│   │   │   └── __init__.py
-│   │   └── workforce
-│   │       └── __init__.py
-│   ├── config
-│   │   ├── asgi.py
-│   │   ├── __init__.py
-│   │   ├── settings.py
-│   │   ├── urls.py
-│   │   └── wsgi.py
-│   ├── static
-│   │   ├── css
-│   │   │   └── style.css
-│   │   ├── icons
-│   │   ├── images
-│   │   └── js
-│   │       └── app.js
-│   ├── templates
-│   │   ├── accounts
-│   │   ├── base.html
-│   │   ├── clients
-│   │   ├── dashboard
-│   │   ├── errors
-│   │   ├── events
-│   │   ├── finance
-│   │   ├── inventory
-│   │   ├── quotations
-│   │   └── vendors
-│   └── tests
-├── database
-│   ├── backups
-│   ├── schema
-│   └── seeds
-├── docs
-│   ├── API_DOCUMENTATION.md
-│   ├── CHANGELOG.md
-│   ├── DATABASE_DESIGN.md
-│   ├── DECISIONS.md
-│   ├── DEVELOPMENT_ROADMAP.md
-│   ├── FOLDER_STRUCTURE.txt
-│   ├── PROJECT_OVERVIEW.md
-│   ├── REQUIREMENTS.md
-│   ├── SYSTEM_ARCHITECTURE.md
-│   └── USER_ROLES_AND_PERMISSIONS.md
-├── .env
-├── .env.example
-├── frontend
-│   ├── assets
-│   ├── components
-│   ├── css
-│   ├── js
-│   ├── layouts
-│   └── pages
-├── .gitignore
-├── PROJECT_CONTEXT.md
-├── README.md
-├── requirements.txt
-├── scripts
-│   ├── backup.sh
-│   ├── run.sh
-│   └── setup.sh
-└── tests
-    ├── integration
-    ├── security
-    └── system
-
-52 directories, 43 files
+./backend/apps/accounts/apps.py
+./backend/apps/accounts/__init__.py
+./backend/apps/accounts/management/commands/create_demo_account.py
+./backend/apps/accounts/management/commands/__init__.py
+./backend/apps/accounts/management/__init__.py
+./backend/apps/accounts/migrations/0001_initial.py
+./backend/apps/accounts/migrations/__init__.py
+./backend/apps/accounts/models.py
+./backend/apps/accounts/urls.py
+./backend/apps/audit/__init__.py
+./backend/apps/clients/admin.py
+./backend/apps/clients/apps.py
+./backend/apps/clients/forms.py
+./backend/apps/clients/__init__.py
+./backend/apps/clients/migrations/0001_initial.py
+./backend/apps/clients/migrations/__init__.py
+./backend/apps/clients/models.py
+./backend/apps/clients/urls.py
+./backend/apps/clients/views.py
+./backend/apps/companies/admin.py
+./backend/apps/companies/apps.py
+./backend/apps/companies/forms.py
+./backend/apps/companies/__init__.py
+./backend/apps/companies/migrations/0001_initial.py
+./backend/apps/companies/migrations/__init__.py
+./backend/apps/companies/models.py
+./backend/apps/companies/urls.py
+./backend/apps/companies/views.py
+./backend/apps/core/apps.py
+./backend/apps/core/__init__.py
+./backend/apps/core/views.py
+./backend/apps/documents/__init__.py
+./backend/apps/enquiries/admin.py
+./backend/apps/enquiries/apps.py
+./backend/apps/enquiries/forms.py
+./backend/apps/enquiries/__init__.py
+./backend/apps/enquiries/migrations/0001_initial.py
+./backend/apps/enquiries/migrations/__init__.py
+./backend/apps/enquiries/models.py
+./backend/apps/enquiries/urls.py
+./backend/apps/enquiries/views.py
+./backend/apps/events/admin.py
+./backend/apps/events/apps.py
+./backend/apps/events/forms.py
+./backend/apps/events/__init__.py
+./backend/apps/events/migrations/0001_initial.py
+./backend/apps/events/migrations/__init__.py
+./backend/apps/events/models.py
+./backend/apps/events/urls.py
+./backend/apps/events/views.py
+./backend/apps/finance/admin.py
+./backend/apps/finance/apps.py
+./backend/apps/finance/forms.py
+./backend/apps/finance/__init__.py
+./backend/apps/finance/migrations/0001_initial.py
+./backend/apps/finance/migrations/__init__.py
+./backend/apps/finance/models.py
+./backend/apps/finance/urls.py
+./backend/apps/finance/views.py
+./backend/apps/__init__.py
+./backend/apps/inventory/__init__.py
+./backend/apps/notifications/__init__.py
+./backend/apps/quotations/admin.py
+./backend/apps/quotations/apps.py
+./backend/apps/quotations/forms.py
+./backend/apps/quotations/__init__.py
+./backend/apps/quotations/migrations/0001_initial.py
+./backend/apps/quotations/migrations/__init__.py
+./backend/apps/quotations/models.py
+./backend/apps/quotations/urls.py
+./backend/apps/quotations/views.py
+./backend/apps/reports/__init__.py
+./backend/apps/vendors/__init__.py
+./backend/apps/workforce/__init__.py
+./backend/config/asgi.py
+./backend/config/__init__.py
+./backend/config/settings.py
+./backend/config/settings.py.before_custom_user
+./backend/config/urls.py
+./backend/config/wsgi.py
+./backend/manage.py
+./backend/PaymentAdmin.java
+./backend/static/css/style.css
+./backend/static/css/style.css.bak
+./backend/staticfiles/admin/css/autocomplete.css
+./backend/staticfiles/admin/css/autocomplete.css.gz
+./backend/staticfiles/admin/css/autocomplete.d24f10bdee41.css
+./backend/staticfiles/admin/css/autocomplete.d24f10bdee41.css.gz
+./backend/staticfiles/admin/css/base.96c479cedf7a.css
+./backend/staticfiles/admin/css/base.96c479cedf7a.css.gz
+./backend/staticfiles/admin/css/base.css
+./backend/staticfiles/admin/css/base.css.gz
+./backend/staticfiles/admin/css/changelists.59465e72d1ef.css
+./backend/staticfiles/admin/css/changelists.59465e72d1ef.css.gz
+./backend/staticfiles/admin/css/changelists.css
+./backend/staticfiles/admin/css/changelists.css.gz
+./backend/staticfiles/admin/css/dark_mode.1215cee25eaa.css
+./backend/staticfiles/admin/css/dark_mode.1215cee25eaa.css.gz
+./backend/staticfiles/admin/css/dark_mode.css
+./backend/staticfiles/admin/css/dark_mode.css.gz
+./backend/staticfiles/admin/css/dashboard.css
+./backend/staticfiles/admin/css/dashboard.css.gz
+./backend/staticfiles/admin/css/dashboard.e90f2068217b.css
+./backend/staticfiles/admin/css/dashboard.e90f2068217b.css.gz
+./backend/staticfiles/admin/css/forms.85f39c0927fa.css
+./backend/staticfiles/admin/css/forms.85f39c0927fa.css.gz
+./backend/staticfiles/admin/css/forms.css
+./backend/staticfiles/admin/css/forms.css.gz
+./backend/staticfiles/admin/css/login.a3b47c458e5d.css
+./backend/staticfiles/admin/css/login.a3b47c458e5d.css.gz
+./backend/staticfiles/admin/css/login.css
+./backend/staticfiles/admin/css/login.css.gz
+./backend/staticfiles/admin/css/nav_sidebar.css
+./backend/staticfiles/admin/css/nav_sidebar.css.gz
+./backend/staticfiles/admin/css/nav_sidebar.dd925738f4cc.css
+./backend/staticfiles/admin/css/nav_sidebar.dd925738f4cc.css.gz
+./backend/staticfiles/admin/css/responsive.80b7f3c4f68f.css
+./backend/staticfiles/admin/css/responsive.80b7f3c4f68f.css.gz
+./backend/staticfiles/admin/css/responsive.css
+./backend/staticfiles/admin/css/responsive.css.gz
+./backend/staticfiles/admin/css/responsive_rtl.011e68bec437.css
+./backend/staticfiles/admin/css/responsive_rtl.011e68bec437.css.gz
+./backend/staticfiles/admin/css/responsive_rtl.css
+./backend/staticfiles/admin/css/responsive_rtl.css.gz
+./backend/staticfiles/admin/css/rtl.66af67f66f09.css
+./backend/staticfiles/admin/css/rtl.66af67f66f09.css.gz
+./backend/staticfiles/admin/css/rtl.css
+./backend/staticfiles/admin/css/rtl.css.gz
+./backend/staticfiles/admin/css/unusable_password_field.b433f2a95fba.css
+./backend/staticfiles/admin/css/unusable_password_field.b433f2a95fba.css.gz
+./backend/staticfiles/admin/css/unusable_password_field.css
+./backend/staticfiles/admin/css/unusable_password_field.css.gz
+./backend/staticfiles/admin/css/vendor/select2/LICENSE-SELECT2.f94142512c91.md
+./backend/staticfiles/admin/css/vendor/select2/LICENSE-SELECT2.f94142512c91.md.gz
+./backend/staticfiles/admin/css/vendor/select2/LICENSE-SELECT2.md
+./backend/staticfiles/admin/css/vendor/select2/LICENSE-SELECT2.md.gz
+./backend/staticfiles/admin/css/vendor/select2/select2.a2194c262648.css
+./backend/staticfiles/admin/css/vendor/select2/select2.a2194c262648.css.gz
+./backend/staticfiles/admin/css/vendor/select2/select2.css
+./backend/staticfiles/admin/css/vendor/select2/select2.css.gz
+./backend/staticfiles/admin/css/vendor/select2/select2.min.9f54e6414f87.css
+./backend/staticfiles/admin/css/vendor/select2/select2.min.9f54e6414f87.css.gz
+./backend/staticfiles/admin/css/vendor/select2/select2.min.css
+./backend/staticfiles/admin/css/vendor/select2/select2.min.css.gz
+./backend/staticfiles/admin/css/widgets.22dbdba6917a.css
+./backend/staticfiles/admin/css/widgets.22dbdba6917a.css.gz
+./backend/staticfiles/admin/css/widgets.css
+./backend/staticfiles/admin/css/widgets.css.gz
+./backend/staticfiles/admin/img/calendar-icons.93ab098d1ac1.svg
+./backend/staticfiles/admin/img/calendar-icons.93ab098d1ac1.svg.gz
+./backend/staticfiles/admin/img/calendar-icons.svg
+./backend/staticfiles/admin/img/calendar-icons.svg.gz
+./backend/staticfiles/admin/img/gis/move_vertex_off.7a23bf31ef8a.svg
+./backend/staticfiles/admin/img/gis/move_vertex_off.7a23bf31ef8a.svg.gz
+./backend/staticfiles/admin/img/gis/move_vertex_off.svg
+./backend/staticfiles/admin/img/gis/move_vertex_off.svg.gz
+./backend/staticfiles/admin/img/gis/move_vertex_on.0047eba25b67.svg
+./backend/staticfiles/admin/img/gis/move_vertex_on.0047eba25b67.svg.gz
+./backend/staticfiles/admin/img/gis/move_vertex_on.svg
+./backend/staticfiles/admin/img/gis/move_vertex_on.svg.gz
+./backend/staticfiles/admin/img/icon-addlink.073aeb1feda7.svg
+./backend/staticfiles/admin/img/icon-addlink.073aeb1feda7.svg.gz
+./backend/staticfiles/admin/img/icon-addlink.svg
+./backend/staticfiles/admin/img/icon-addlink.svg.gz
+./backend/staticfiles/admin/img/icon-alert.034cc7d8a67f.svg
+./backend/staticfiles/admin/img/icon-alert.034cc7d8a67f.svg.gz
+./backend/staticfiles/admin/img/icon-alert.svg
+./backend/staticfiles/admin/img/icon-alert.svg.gz
+./backend/staticfiles/admin/img/icon-calendar.ac7aea671bea.svg
+./backend/staticfiles/admin/img/icon-calendar.ac7aea671bea.svg.gz
+./backend/staticfiles/admin/img/icon-calendar.svg
+./backend/staticfiles/admin/img/icon-calendar.svg.gz
+./backend/staticfiles/admin/img/icon-changelink.7eddb320e61f.svg
+./backend/staticfiles/admin/img/icon-changelink.7eddb320e61f.svg.gz
+./backend/staticfiles/admin/img/icon-changelink.svg
+./backend/staticfiles/admin/img/icon-changelink.svg.gz
+./backend/staticfiles/admin/img/icon-clock.e1d4dfac3f2b.svg
+./backend/staticfiles/admin/img/icon-clock.e1d4dfac3f2b.svg.gz
+./backend/staticfiles/admin/img/icon-clock.svg
+./backend/staticfiles/admin/img/icon-clock.svg.gz
+./backend/staticfiles/admin/img/icon-deletelink.564ef9dc3854.svg
+./backend/staticfiles/admin/img/icon-deletelink.564ef9dc3854.svg.gz
+./backend/staticfiles/admin/img/icon-deletelink.svg
+./backend/staticfiles/admin/img/icon-deletelink.svg.gz
+./backend/staticfiles/admin/img/icon-hidelink.8d245a995e18.svg
+./backend/staticfiles/admin/img/icon-hidelink.8d245a995e18.svg.gz
+./backend/staticfiles/admin/img/icon-hidelink.svg
+./backend/staticfiles/admin/img/icon-hidelink.svg.gz
+./backend/staticfiles/admin/img/icon-no.439e821418cd.svg
+./backend/staticfiles/admin/img/icon-no.439e821418cd.svg.gz
+./backend/staticfiles/admin/img/icon-no.svg
+./backend/staticfiles/admin/img/icon-no.svg.gz
+./backend/staticfiles/admin/img/icon-unknown.a18cb4398978.svg
+./backend/staticfiles/admin/img/icon-unknown.a18cb4398978.svg.gz
+./backend/staticfiles/admin/img/icon-unknown-alt.81536e128bb6.svg
+./backend/staticfiles/admin/img/icon-unknown-alt.81536e128bb6.svg.gz
+./backend/staticfiles/admin/img/icon-unknown-alt.svg
+./backend/staticfiles/admin/img/icon-unknown-alt.svg.gz
+./backend/staticfiles/admin/img/icon-unknown.svg
+./backend/staticfiles/admin/img/icon-unknown.svg.gz
+./backend/staticfiles/admin/img/icon-viewlink.41eb31f7826e.svg
+./backend/staticfiles/admin/img/icon-viewlink.41eb31f7826e.svg.gz
+./backend/staticfiles/admin/img/icon-viewlink.svg
+./backend/staticfiles/admin/img/icon-viewlink.svg.gz
+./backend/staticfiles/admin/img/icon-yes.d2f9f035226a.svg
+./backend/staticfiles/admin/img/icon-yes.d2f9f035226a.svg.gz
+./backend/staticfiles/admin/img/icon-yes.svg
+./backend/staticfiles/admin/img/icon-yes.svg.gz
+./backend/staticfiles/admin/img/inline-delete.358e965fe3e7.svg
+./backend/staticfiles/admin/img/inline-delete.358e965fe3e7.svg.gz
+./backend/staticfiles/admin/img/inline-delete.svg
+./backend/staticfiles/admin/img/inline-delete.svg.gz
+./backend/staticfiles/admin/img/LICENSE
+./backend/staticfiles/admin/img/LICENSE.2c54f4e1ca1c
+./backend/staticfiles/admin/img/LICENSE.2c54f4e1ca1c.gz
+./backend/staticfiles/admin/img/LICENSE.gz
+./backend/staticfiles/admin/img/README.9849248c9207.txt
+./backend/staticfiles/admin/img/README.9849248c9207.txt.gz
+./backend/staticfiles/admin/img/README.txt
+./backend/staticfiles/admin/img/README.txt.gz
+./backend/staticfiles/admin/img/search.7cf54ff789c6.svg
+./backend/staticfiles/admin/img/search.7cf54ff789c6.svg.gz
+./backend/staticfiles/admin/img/search.svg
+./backend/staticfiles/admin/img/search.svg.gz
+./backend/staticfiles/admin/img/selector-icons.b4555096cea2.svg
+./backend/staticfiles/admin/img/selector-icons.b4555096cea2.svg.gz
+./backend/staticfiles/admin/img/selector-icons.svg
+./backend/staticfiles/admin/img/selector-icons.svg.gz
+./backend/staticfiles/admin/img/sorting-icons.3a097b59f104.svg
+./backend/staticfiles/admin/img/sorting-icons.3a097b59f104.svg.gz
+./backend/staticfiles/admin/img/sorting-icons.svg
+./backend/staticfiles/admin/img/sorting-icons.svg.gz
+./backend/staticfiles/admin/img/tooltag-add.e59d620a9742.svg
+./backend/staticfiles/admin/img/tooltag-add.e59d620a9742.svg.gz
+./backend/staticfiles/admin/img/tooltag-add.svg
+./backend/staticfiles/admin/img/tooltag-add.svg.gz
+./backend/staticfiles/admin/img/tooltag-arrowright.bbfb788a849e.svg
+./backend/staticfiles/admin/img/tooltag-arrowright.bbfb788a849e.svg.gz
+./backend/staticfiles/admin/img/tooltag-arrowright.svg
+./backend/staticfiles/admin/img/tooltag-arrowright.svg.gz
+./backend/staticfiles/admin/js/actions.f1d5653edb59.js
+./backend/staticfiles/admin/js/actions.f1d5653edb59.js.gz
+./backend/staticfiles/admin/js/actions.js
+./backend/staticfiles/admin/js/actions.js.gz
+./backend/staticfiles/admin/js/admin/DateTimeShortcuts.9f6e209cebca.js
+./backend/staticfiles/admin/js/admin/DateTimeShortcuts.9f6e209cebca.js.gz
+./backend/staticfiles/admin/js/admin/DateTimeShortcuts.js
+./backend/staticfiles/admin/js/admin/DateTimeShortcuts.js.gz
+./backend/staticfiles/admin/js/admin/RelatedObjectLookups.ed6240809a40.js
+./backend/staticfiles/admin/js/admin/RelatedObjectLookups.ed6240809a40.js.gz
+./backend/staticfiles/admin/js/admin/RelatedObjectLookups.js
+./backend/staticfiles/admin/js/admin/RelatedObjectLookups.js.gz
+./backend/staticfiles/admin/js/autocomplete.01591ab27be7.js
+./backend/staticfiles/admin/js/autocomplete.01591ab27be7.js.gz
+./backend/staticfiles/admin/js/autocomplete.js
+./backend/staticfiles/admin/js/autocomplete.js.gz
+./backend/staticfiles/admin/js/calendar.d64496bbf46d.js
+./backend/staticfiles/admin/js/calendar.d64496bbf46d.js.gz
+./backend/staticfiles/admin/js/calendar.js
+./backend/staticfiles/admin/js/calendar.js.gz
+./backend/staticfiles/admin/js/cancel.ecc4c5ca7b32.js
+./backend/staticfiles/admin/js/cancel.ecc4c5ca7b32.js.gz
+./backend/staticfiles/admin/js/cancel.js
+./backend/staticfiles/admin/js/cancel.js.gz
+./backend/staticfiles/admin/js/change_form.9d8ca4f96b75.js
+./backend/staticfiles/admin/js/change_form.9d8ca4f96b75.js.gz
+./backend/staticfiles/admin/js/change_form.js
+./backend/staticfiles/admin/js/change_form.js.gz
+./backend/staticfiles/admin/js/core.7e257fdf56dc.js
+./backend/staticfiles/admin/js/core.7e257fdf56dc.js.gz
+./backend/staticfiles/admin/js/core.js
+./backend/staticfiles/admin/js/core.js.gz
+./backend/staticfiles/admin/js/filters.0e360b7a9f80.js
+./backend/staticfiles/admin/js/filters.0e360b7a9f80.js.gz
+./backend/staticfiles/admin/js/filters.js
+./backend/staticfiles/admin/js/filters.js.gz
+./backend/staticfiles/admin/js/inlines.89b3c627c5dc.js
+./backend/staticfiles/admin/js/inlines.89b3c627c5dc.js.gz
+./backend/staticfiles/admin/js/inlines.js
+./backend/staticfiles/admin/js/inlines.js.gz
+./backend/staticfiles/admin/js/jquery.init.b7781a0897fc.js
+./backend/staticfiles/admin/js/jquery.init.b7781a0897fc.js.gz
+./backend/staticfiles/admin/js/jquery.init.js
+./backend/staticfiles/admin/js/jquery.init.js.gz
+./backend/staticfiles/admin/js/nav_sidebar.3b9190d420b1.js
+./backend/staticfiles/admin/js/nav_sidebar.3b9190d420b1.js.gz
+./backend/staticfiles/admin/js/nav_sidebar.js
+./backend/staticfiles/admin/js/nav_sidebar.js.gz
+./backend/staticfiles/admin/js/popup_response.96190d343c22.js
+./backend/staticfiles/admin/js/popup_response.96190d343c22.js.gz
+./backend/staticfiles/admin/js/popup_response.js
+./backend/staticfiles/admin/js/popup_response.js.gz
+./backend/staticfiles/admin/js/prepopulate.bd2361dfd64d.js
+./backend/staticfiles/admin/js/prepopulate.bd2361dfd64d.js.gz
+./backend/staticfiles/admin/js/prepopulate_init.6cac7f3105b8.js
+./backend/staticfiles/admin/js/prepopulate_init.6cac7f3105b8.js.gz
+./backend/staticfiles/admin/js/prepopulate_init.js
+./backend/staticfiles/admin/js/prepopulate_init.js.gz
+./backend/staticfiles/admin/js/prepopulate.js
+./backend/staticfiles/admin/js/prepopulate.js.gz
+./backend/staticfiles/admin/js/SelectBox.7d3ce5a98007.js
+./backend/staticfiles/admin/js/SelectBox.7d3ce5a98007.js.gz
+./backend/staticfiles/admin/js/SelectBox.js
+./backend/staticfiles/admin/js/SelectBox.js.gz
+./backend/staticfiles/admin/js/SelectFilter2.58388953117f.js
+./backend/staticfiles/admin/js/SelectFilter2.58388953117f.js.gz
+./backend/staticfiles/admin/js/SelectFilter2.js
+./backend/staticfiles/admin/js/SelectFilter2.js.gz
+./backend/staticfiles/admin/js/theme.91cf832f559e.js
+./backend/staticfiles/admin/js/theme.91cf832f559e.js.gz
+./backend/staticfiles/admin/js/theme.js
+./backend/staticfiles/admin/js/theme.js.gz
+./backend/staticfiles/admin/js/unusable_password_field.017ea86b6ae4.js
+./backend/staticfiles/admin/js/unusable_password_field.017ea86b6ae4.js.gz
+./backend/staticfiles/admin/js/unusable_password_field.js
+./backend/staticfiles/admin/js/unusable_password_field.js.gz
+./backend/staticfiles/admin/js/urlify.ae970a820212.js
+./backend/staticfiles/admin/js/urlify.ae970a820212.js.gz
+./backend/staticfiles/admin/js/urlify.js
+./backend/staticfiles/admin/js/urlify.js.gz
+./backend/staticfiles/admin/js/vendor/jquery/jquery.12e87d2f3a4c.js
+./backend/staticfiles/admin/js/vendor/jquery/jquery.12e87d2f3a4c.js.gz
+./backend/staticfiles/admin/js/vendor/jquery/jquery.js
+./backend/staticfiles/admin/js/vendor/jquery/jquery.js.gz
+./backend/staticfiles/admin/js/vendor/jquery/jquery.min.2c872dbe60f4.js
+./backend/staticfiles/admin/js/vendor/jquery/jquery.min.2c872dbe60f4.js.gz
+./backend/staticfiles/admin/js/vendor/jquery/jquery.min.js
+./backend/staticfiles/admin/js/vendor/jquery/jquery.min.js.gz
+./backend/staticfiles/admin/js/vendor/jquery/LICENSE.de877aa6d744.txt
+./backend/staticfiles/admin/js/vendor/jquery/LICENSE.de877aa6d744.txt.gz
+./backend/staticfiles/admin/js/vendor/jquery/LICENSE.txt
+./backend/staticfiles/admin/js/vendor/jquery/LICENSE.txt.gz
+./backend/staticfiles/admin/js/vendor/select2/i18n/af.4f6fcd73488c.js
+./backend/staticfiles/admin/js/vendor/select2/i18n/af.4f6fcd73488c.js.gz
+./backend/staticfiles/admin/js/vendor/select2/i18n/af.js
+./backend/staticfiles/admin/js/vendor/select2/i18n/af.js.gz
+./backend/staticfiles/admin/js/vendor/select2/i18n/ar.65aa8e36bf5d.js
+./backend/staticfiles/admin/js/vendor/select2/i18n/ar.65aa8e36bf5d.js.gz
+./backend/staticfiles/admin/js/vendor/select2/i18n/ar.js
+./backend/staticfiles/admin/js/vendor/select2/i18n/ar.js.gz
+./backend/staticfiles/admin/js/vendor/select2/i18n/az.270c257daf81.js
+./backend/staticfiles/admin/js/vendor/select2/i18n/az.270c257daf81.js.gz
+./backend/staticfiles/admin/js/vendor/select2/i18n/az.js
+./backend/staticfiles/admin/js/vendor/select2/i18n/az.js.gz
+./backend/staticfiles/admin/js/vendor/select2/i18n/bg.39b8be30d4f0.js
+./backend/staticfiles/admin/js/vendor/select2/i18n/bg.39b8be30d4f0.js.gz
+./backend/staticfiles/admin/js/vendor/select2/i18n/bg.js
+./backend/staticfiles/admin/js/vendor/select2/i18n/bg.js.gz
+./backend/staticfiles/admin/js/vendor/select2/i18n/bn.6d42b4dd5665.js
+./backend/staticfiles/admin/js/vendor/select2/i18n/bn.6d42b4dd5665.js.gz
+./backend/staticfiles/admin/js/vendor/select2/i18n/bn.js
+./backend/staticfiles/admin/js/vendor/select2/i18n/bn.js.gz
+./backend/staticfiles/admin/js/vendor/select2/i18n/bs.91624382358e.js
+./backend/staticfiles/admin/js/vendor/select2/i18n/bs.91624382358e.js.gz
+./backend/staticfiles/admin/js/vendor/select2/i18n/bs.js
+./backend/staticfiles/admin/js/vendor/select2/i18n/bs.js.gz
+./backend/staticfiles/admin/js/vendor/select2/i18n/ca.a166b745933a.js
+./backend/staticfiles/admin/js/vendor/select2/i18n/ca.a166b745933a.js.gz
+./backend/staticfiles/admin/js/vendor/select2/i18n/ca.js
+./backend/staticfiles/admin/js/vendor/select2/i18n/ca.js.gz
+./backend/staticfiles/admin/js/vendor/select2/i18n/cs.4f43e8e7d33a.js
+./backend/staticfiles/admin/js/vendor/select2/i18n/cs.4f43e8e7d33a.js.gz
+./backend/staticfiles/admin/js/vendor/select2/i18n/cs.js
+./backend/staticfiles/admin/js/vendor/select2/i18n/cs.js.gz
+./backend/staticfiles/admin/js/vendor/select2/i18n/da.766346afe4dd.js
+./backend/staticfiles/admin/js/vendor/select2/i18n/da.766346afe4dd.js.gz
+./backend/staticfiles/admin/js/vendor/select2/i18n/da.js
+./backend/staticfiles/admin/js/vendor/select2/i18n/da.js.gz
+./backend/staticfiles/admin/js/vendor/select2/i18n/de.8a1c222b0204.js
+./backend/staticfiles/admin/js/vendor/select2/i18n/de.8a1c222b0204.js.gz
+./backend/staticfiles/admin/js/vendor/select2/i18n/de.js
+./backend/staticfiles/admin/js/vendor/select2/i18n/de.js.gz
+./backend/staticfiles/admin/js/vendor/select2/i18n/dsb.56372c92d2f1.js
+./backend/staticfiles/admin/js/vendor/select2/i18n/dsb.56372c92d2f1.js.gz
+./backend/staticfiles/admin/js/vendor/select2/i18n/dsb.js
+./backend/staticfiles/admin/js/vendor/select2/i18n/dsb.js.gz
+./backend/staticfiles/admin/js/vendor/select2/i18n/el.27097f071856.js
+./backend/staticfiles/admin/js/vendor/select2/i18n/el.27097f071856.js.gz
+./backend/staticfiles/admin/js/vendor/select2/i18n/el.js
+./backend/staticfiles/admin/js/vendor/select2/i18n/el.js.gz
+./backend/staticfiles/admin/js/vendor/select2/i18n/en.cf932ba09a98.js
+./backend/staticfiles/admin/js/vendor/select2/i18n/en.cf932ba09a98.js.gz
+./backend/staticfiles/admin/js/vendor/select2/i18n/en.js
+./backend/staticfiles/admin/js/vendor/select2/i18n/en.js.gz
+./backend/staticfiles/admin/js/vendor/select2/i18n/es.66dbc2652fb1.js
+./backend/staticfiles/admin/js/vendor/select2/i18n/es.66dbc2652fb1.js.gz
+./backend/staticfiles/admin/js/vendor/select2/i18n/es.js
+./backend/staticfiles/admin/js/vendor/select2/i18n/es.js.gz
+./backend/staticfiles/admin/js/vendor/select2/i18n/et.2b96fd98289d.js
+./backend/staticfiles/admin/js/vendor/select2/i18n/et.2b96fd98289d.js.gz
+./backend/staticfiles/admin/js/vendor/select2/i18n/et.js
+./backend/staticfiles/admin/js/vendor/select2/i18n/et.js.gz
+./backend/staticfiles/admin/js/vendor/select2/i18n/eu.adfe5c97b72c.js
+./backend/staticfiles/admin/js/vendor/select2/i18n/eu.adfe5c97b72c.js.gz
+./backend/staticfiles/admin/js/vendor/select2/i18n/eu.js
+./backend/staticfiles/admin/js/vendor/select2/i18n/eu.js.gz
+./backend/staticfiles/admin/js/vendor/select2/i18n/fa.3b5bd1961cfd.js
+./backend/staticfiles/admin/js/vendor/select2/i18n/fa.3b5bd1961cfd.js.gz
+./backend/staticfiles/admin/js/vendor/select2/i18n/fa.js
+./backend/staticfiles/admin/js/vendor/select2/i18n/fa.js.gz
+./backend/staticfiles/admin/js/vendor/select2/i18n/fi.614ec42aa9ba.js
+./backend/staticfiles/admin/js/vendor/select2/i18n/fi.614ec42aa9ba.js.gz
+./backend/staticfiles/admin/js/vendor/select2/i18n/fi.js
+./backend/staticfiles/admin/js/vendor/select2/i18n/fi.js.gz
+./backend/staticfiles/admin/js/vendor/select2/i18n/fr.05e0542fcfe6.js
+./backend/staticfiles/admin/js/vendor/select2/i18n/fr.05e0542fcfe6.js.gz
+./backend/staticfiles/admin/js/vendor/select2/i18n/fr.js
+./backend/staticfiles/admin/js/vendor/select2/i18n/fr.js.gz
+./backend/staticfiles/admin/js/vendor/select2/i18n/gl.d99b1fedaa86.js
+./backend/staticfiles/admin/js/vendor/select2/i18n/gl.d99b1fedaa86.js.gz
+./backend/staticfiles/admin/js/vendor/select2/i18n/gl.js
+./backend/staticfiles/admin/js/vendor/select2/i18n/gl.js.gz
+./backend/staticfiles/admin/js/vendor/select2/i18n/he.e420ff6cd3ed.js
+./backend/staticfiles/admin/js/vendor/select2/i18n/he.e420ff6cd3ed.js.gz
+./backend/staticfiles/admin/js/vendor/select2/i18n/he.js
+./backend/staticfiles/admin/js/vendor/select2/i18n/he.js.gz
+./backend/staticfiles/admin/js/vendor/select2/i18n/hi.70640d41628f.js
+./backend/staticfiles/admin/js/vendor/select2/i18n/hi.70640d41628f.js.gz
+./backend/staticfiles/admin/js/vendor/select2/i18n/hi.js
+./backend/staticfiles/admin/js/vendor/select2/i18n/hi.js.gz
+./backend/staticfiles/admin/js/vendor/select2/i18n/hr.a2b092cc1147.js
+./backend/staticfiles/admin/js/vendor/select2/i18n/hr.a2b092cc1147.js.gz
+./backend/staticfiles/admin/js/vendor/select2/i18n/hr.js
+./backend/staticfiles/admin/js/vendor/select2/i18n/hr.js.gz
+./backend/staticfiles/admin/js/vendor/select2/i18n/hsb.fa3b55265efe.js
+./backend/staticfiles/admin/js/vendor/select2/i18n/hsb.fa3b55265efe.js.gz
+./backend/staticfiles/admin/js/vendor/select2/i18n/hsb.js
+./backend/staticfiles/admin/js/vendor/select2/i18n/hsb.js.gz
+./backend/staticfiles/admin/js/vendor/select2/i18n/hu.6ec6039cb8a3.js
+./backend/staticfiles/admin/js/vendor/select2/i18n/hu.6ec6039cb8a3.js.gz
+./backend/staticfiles/admin/js/vendor/select2/i18n/hu.js
+./backend/staticfiles/admin/js/vendor/select2/i18n/hu.js.gz
+./backend/staticfiles/admin/js/vendor/select2/i18n/hy.c7babaeef5a6.js
+./backend/staticfiles/admin/js/vendor/select2/i18n/hy.c7babaeef5a6.js.gz
+./backend/staticfiles/admin/js/vendor/select2/i18n/hy.js
+./backend/staticfiles/admin/js/vendor/select2/i18n/hy.js.gz
+./backend/staticfiles/admin/js/vendor/select2/i18n/id.04debded514d.js
+./backend/staticfiles/admin/js/vendor/select2/i18n/id.04debded514d.js.gz
+./backend/staticfiles/admin/js/vendor/select2/i18n/id.js
+./backend/staticfiles/admin/js/vendor/select2/i18n/id.js.gz
+./backend/staticfiles/admin/js/vendor/select2/i18n/is.3ddd9a6a97e9.js
+./backend/staticfiles/admin/js/vendor/select2/i18n/is.3ddd9a6a97e9.js.gz
+./backend/staticfiles/admin/js/vendor/select2/i18n/is.js
+./backend/staticfiles/admin/js/vendor/select2/i18n/is.js.gz
+./backend/staticfiles/admin/js/vendor/select2/i18n/it.be4fe8d365b5.js
+./backend/staticfiles/admin/js/vendor/select2/i18n/it.be4fe8d365b5.js.gz
+./backend/staticfiles/admin/js/vendor/select2/i18n/it.js
+./backend/staticfiles/admin/js/vendor/select2/i18n/it.js.gz
+./backend/staticfiles/admin/js/vendor/select2/i18n/ja.170ae885d74f.js
+./backend/staticfiles/admin/js/vendor/select2/i18n/ja.170ae885d74f.js.gz
+./backend/staticfiles/admin/js/vendor/select2/i18n/ja.js
+./backend/staticfiles/admin/js/vendor/select2/i18n/ja.js.gz
+./backend/staticfiles/admin/js/vendor/select2/i18n/ka.2083264a54f0.js
+./backend/staticfiles/admin/js/vendor/select2/i18n/ka.2083264a54f0.js.gz
+./backend/staticfiles/admin/js/vendor/select2/i18n/ka.js
+./backend/staticfiles/admin/js/vendor/select2/i18n/ka.js.gz
+./backend/staticfiles/admin/js/vendor/select2/i18n/km.c23089cb06ca.js
+./backend/staticfiles/admin/js/vendor/select2/i18n/km.c23089cb06ca.js.gz
+./backend/staticfiles/admin/js/vendor/select2/i18n/km.js
+./backend/staticfiles/admin/js/vendor/select2/i18n/km.js.gz
+./backend/staticfiles/admin/js/vendor/select2/i18n/ko.e7be6c20e673.js
+./backend/staticfiles/admin/js/vendor/select2/i18n/ko.e7be6c20e673.js.gz
+./backend/staticfiles/admin/js/vendor/select2/i18n/ko.js
+./backend/staticfiles/admin/js/vendor/select2/i18n/ko.js.gz
+./backend/staticfiles/admin/js/vendor/select2/i18n/lt.23c7ce903300.js
+./backend/staticfiles/admin/js/vendor/select2/i18n/lt.23c7ce903300.js.gz
+./backend/staticfiles/admin/js/vendor/select2/i18n/lt.js
+./backend/staticfiles/admin/js/vendor/select2/i18n/lt.js.gz
+./backend/staticfiles/admin/js/vendor/select2/i18n/lv.08e62128eac1.js
+./backend/staticfiles/admin/js/vendor/select2/i18n/lv.08e62128eac1.js.gz
+./backend/staticfiles/admin/js/vendor/select2/i18n/lv.js
+./backend/staticfiles/admin/js/vendor/select2/i18n/lv.js.gz
+./backend/staticfiles/admin/js/vendor/select2/i18n/mk.dabbb9087130.js
+./backend/staticfiles/admin/js/vendor/select2/i18n/mk.dabbb9087130.js.gz
+./backend/staticfiles/admin/js/vendor/select2/i18n/mk.js
+./backend/staticfiles/admin/js/vendor/select2/i18n/mk.js.gz
+./backend/staticfiles/admin/js/vendor/select2/i18n/ms.4ba82c9a51ce.js
+./backend/staticfiles/admin/js/vendor/select2/i18n/ms.4ba82c9a51ce.js.gz
+./backend/staticfiles/admin/js/vendor/select2/i18n/ms.js
+./backend/staticfiles/admin/js/vendor/select2/i18n/ms.js.gz
+./backend/staticfiles/admin/js/vendor/select2/i18n/nb.da2fce143f27.js
+./backend/staticfiles/admin/js/vendor/select2/i18n/nb.da2fce143f27.js.gz
+./backend/staticfiles/admin/js/vendor/select2/i18n/nb.js
+./backend/staticfiles/admin/js/vendor/select2/i18n/nb.js.gz
+./backend/staticfiles/admin/js/vendor/select2/i18n/ne.3d79fd3f08db.js
+./backend/staticfiles/admin/js/vendor/select2/i18n/ne.3d79fd3f08db.js.gz
+./backend/staticfiles/admin/js/vendor/select2/i18n/ne.js
+./backend/staticfiles/admin/js/vendor/select2/i18n/ne.js.gz
+./backend/staticfiles/admin/js/vendor/select2/i18n/nl.997868a37ed8.js
+./backend/staticfiles/admin/js/vendor/select2/i18n/nl.997868a37ed8.js.gz
+./backend/staticfiles/admin/js/vendor/select2/i18n/nl.js
+./backend/staticfiles/admin/js/vendor/select2/i18n/nl.js.gz
+./backend/staticfiles/admin/js/vendor/select2/i18n/pl.6031b4f16452.js
+./backend/staticfiles/admin/js/vendor/select2/i18n/pl.6031b4f16452.js.gz
+./backend/staticfiles/admin/js/vendor/select2/i18n/pl.js
+./backend/staticfiles/admin/js/vendor/select2/i18n/pl.js.gz
+./backend/staticfiles/admin/js/vendor/select2/i18n/ps.38dfa47af9e0.js
+./backend/staticfiles/admin/js/vendor/select2/i18n/ps.38dfa47af9e0.js.gz
+./backend/staticfiles/admin/js/vendor/select2/i18n/ps.js
+./backend/staticfiles/admin/js/vendor/select2/i18n/ps.js.gz
+./backend/staticfiles/admin/js/vendor/select2/i18n/pt.33b4a3b44d43.js
+./backend/staticfiles/admin/js/vendor/select2/i18n/pt.33b4a3b44d43.js.gz
+./backend/staticfiles/admin/js/vendor/select2/i18n/pt-BR.e1b294433e7f.js
+./backend/staticfiles/admin/js/vendor/select2/i18n/pt-BR.e1b294433e7f.js.gz
+./backend/staticfiles/admin/js/vendor/select2/i18n/pt-BR.js
+./backend/staticfiles/admin/js/vendor/select2/i18n/pt-BR.js.gz
+./backend/staticfiles/admin/js/vendor/select2/i18n/pt.js
+./backend/staticfiles/admin/js/vendor/select2/i18n/pt.js.gz
+./backend/staticfiles/admin/js/vendor/select2/i18n/ro.f75cb460ec3b.js
+./backend/staticfiles/admin/js/vendor/select2/i18n/ro.f75cb460ec3b.js.gz
+./backend/staticfiles/admin/js/vendor/select2/i18n/ro.js
+./backend/staticfiles/admin/js/vendor/select2/i18n/ro.js.gz
+./backend/staticfiles/admin/js/vendor/select2/i18n/ru.934aa95f5b5f.js
+./backend/staticfiles/admin/js/vendor/select2/i18n/ru.934aa95f5b5f.js.gz
+./backend/staticfiles/admin/js/vendor/select2/i18n/ru.js
+./backend/staticfiles/admin/js/vendor/select2/i18n/ru.js.gz
+./backend/staticfiles/admin/js/vendor/select2/i18n/sk.33d02cef8d11.js
+./backend/staticfiles/admin/js/vendor/select2/i18n/sk.33d02cef8d11.js.gz
+./backend/staticfiles/admin/js/vendor/select2/i18n/sk.js
+./backend/staticfiles/admin/js/vendor/select2/i18n/sk.js.gz
+./backend/staticfiles/admin/js/vendor/select2/i18n/sl.131a78bc0752.js
+./backend/staticfiles/admin/js/vendor/select2/i18n/sl.131a78bc0752.js.gz
+./backend/staticfiles/admin/js/vendor/select2/i18n/sl.js
+./backend/staticfiles/admin/js/vendor/select2/i18n/sl.js.gz
+./backend/staticfiles/admin/js/vendor/select2/i18n/sq.5636b60d29c9.js
+./backend/staticfiles/admin/js/vendor/select2/i18n/sq.5636b60d29c9.js.gz
+./backend/staticfiles/admin/js/vendor/select2/i18n/sq.js
+./backend/staticfiles/admin/js/vendor/select2/i18n/sq.js.gz
+./backend/staticfiles/admin/js/vendor/select2/i18n/sr.5ed85a48f483.js
+./backend/staticfiles/admin/js/vendor/select2/i18n/sr.5ed85a48f483.js.gz
+./backend/staticfiles/admin/js/vendor/select2/i18n/sr-Cyrl.f254bb8c4c7c.js
+./backend/staticfiles/admin/js/vendor/select2/i18n/sr-Cyrl.f254bb8c4c7c.js.gz
+./backend/staticfiles/admin/js/vendor/select2/i18n/sr-Cyrl.js
+./backend/staticfiles/admin/js/vendor/select2/i18n/sr-Cyrl.js.gz
+./backend/staticfiles/admin/js/vendor/select2/i18n/sr.js
+./backend/staticfiles/admin/js/vendor/select2/i18n/sr.js.gz
+./backend/staticfiles/admin/js/vendor/select2/i18n/sv.7a9c2f71e777.js
+./backend/staticfiles/admin/js/vendor/select2/i18n/sv.7a9c2f71e777.js.gz
+./backend/staticfiles/admin/js/vendor/select2/i18n/sv.js
+./backend/staticfiles/admin/js/vendor/select2/i18n/sv.js.gz
+./backend/staticfiles/admin/js/vendor/select2/i18n/th.f38c20b0221b.js
+./backend/staticfiles/admin/js/vendor/select2/i18n/th.f38c20b0221b.js.gz
+./backend/staticfiles/admin/js/vendor/select2/i18n/th.js
+./backend/staticfiles/admin/js/vendor/select2/i18n/th.js.gz
+./backend/staticfiles/admin/js/vendor/select2/i18n/tk.7c572a68c78f.js
+./backend/staticfiles/admin/js/vendor/select2/i18n/tk.7c572a68c78f.js.gz
+./backend/staticfiles/admin/js/vendor/select2/i18n/tk.js
+./backend/staticfiles/admin/js/vendor/select2/i18n/tk.js.gz
+./backend/staticfiles/admin/js/vendor/select2/i18n/tr.b5a0643d1545.js
+./backend/staticfiles/admin/js/vendor/select2/i18n/tr.b5a0643d1545.js.gz
+./backend/staticfiles/admin/js/vendor/select2/i18n/tr.js
+./backend/staticfiles/admin/js/vendor/select2/i18n/tr.js.gz
+./backend/staticfiles/admin/js/vendor/select2/i18n/uk.8cede7f4803c.js
+./backend/staticfiles/admin/js/vendor/select2/i18n/uk.8cede7f4803c.js.gz
+./backend/staticfiles/admin/js/vendor/select2/i18n/uk.js
+./backend/staticfiles/admin/js/vendor/select2/i18n/uk.js.gz
+./backend/staticfiles/admin/js/vendor/select2/i18n/vi.097a5b75b3e1.js
+./backend/staticfiles/admin/js/vendor/select2/i18n/vi.097a5b75b3e1.js.gz
+./backend/staticfiles/admin/js/vendor/select2/i18n/vi.js
+./backend/staticfiles/admin/js/vendor/select2/i18n/vi.js.gz
+./backend/staticfiles/admin/js/vendor/select2/i18n/zh-CN.2cff662ec5f9.js
+./backend/staticfiles/admin/js/vendor/select2/i18n/zh-CN.2cff662ec5f9.js.gz
+./backend/staticfiles/admin/js/vendor/select2/i18n/zh-CN.js
+./backend/staticfiles/admin/js/vendor/select2/i18n/zh-CN.js.gz
+./backend/staticfiles/admin/js/vendor/select2/i18n/zh-TW.04554a227c2b.js
+./backend/staticfiles/admin/js/vendor/select2/i18n/zh-TW.04554a227c2b.js.gz
+./backend/staticfiles/admin/js/vendor/select2/i18n/zh-TW.js
+./backend/staticfiles/admin/js/vendor/select2/i18n/zh-TW.js.gz
+./backend/staticfiles/admin/js/vendor/select2/LICENSE.f94142512c91.md
+./backend/staticfiles/admin/js/vendor/select2/LICENSE.f94142512c91.md.gz
+./backend/staticfiles/admin/js/vendor/select2/LICENSE.md
+./backend/staticfiles/admin/js/vendor/select2/LICENSE.md.gz
+./backend/staticfiles/admin/js/vendor/select2/select2.full.c2afdeda3058.js
+./backend/staticfiles/admin/js/vendor/select2/select2.full.c2afdeda3058.js.gz
+./backend/staticfiles/admin/js/vendor/select2/select2.full.js
+./backend/staticfiles/admin/js/vendor/select2/select2.full.js.gz
+./backend/staticfiles/admin/js/vendor/select2/select2.full.min.fcd7500d8e13.js
+./backend/staticfiles/admin/js/vendor/select2/select2.full.min.fcd7500d8e13.js.gz
+./backend/staticfiles/admin/js/vendor/select2/select2.full.min.js
+./backend/staticfiles/admin/js/vendor/select2/select2.full.min.js.gz
+./backend/staticfiles/admin/js/vendor/xregexp/LICENSE.b6fd2ceea8d3.txt
+./backend/staticfiles/admin/js/vendor/xregexp/LICENSE.b6fd2ceea8d3.txt.gz
+./backend/staticfiles/admin/js/vendor/xregexp/LICENSE.txt
+./backend/staticfiles/admin/js/vendor/xregexp/LICENSE.txt.gz
+./backend/staticfiles/admin/js/vendor/xregexp/xregexp.a7e08b0ce686.js
+./backend/staticfiles/admin/js/vendor/xregexp/xregexp.a7e08b0ce686.js.gz
+./backend/staticfiles/admin/js/vendor/xregexp/xregexp.js
+./backend/staticfiles/admin/js/vendor/xregexp/xregexp.js.gz
+./backend/staticfiles/admin/js/vendor/xregexp/xregexp.min.f1ae4617847c.js
+./backend/staticfiles/admin/js/vendor/xregexp/xregexp.min.f1ae4617847c.js.gz
+./backend/staticfiles/admin/js/vendor/xregexp/xregexp.min.js
+./backend/staticfiles/admin/js/vendor/xregexp/xregexp.min.js.gz
+./backend/staticfiles/css/style.71f7beceddb7.css
+./backend/staticfiles/css/style.71f7beceddb7.css.gz
+./backend/staticfiles/css/style.css
+./backend/staticfiles/css/style.css.38c28e6969cf.bak
+./backend/staticfiles/css/style.css.38c28e6969cf.bak.gz
+./backend/staticfiles/css/style.css.bak
+./backend/staticfiles/css/style.css.bak.gz
+./backend/staticfiles/css/style.css.gz
+./backend/staticfiles/js/app.d41d8cd98f00.js
+./backend/staticfiles/js/app.js
+./backend/staticfiles/rest_framework/css/bootstrap.min.css
+./backend/staticfiles/rest_framework/css/bootstrap.min.css.cafbda9c0e9e.map
+./backend/staticfiles/rest_framework/css/bootstrap.min.css.cafbda9c0e9e.map.gz
+./backend/staticfiles/rest_framework/css/bootstrap.min.css.gz
+./backend/staticfiles/rest_framework/css/bootstrap.min.css.map
+./backend/staticfiles/rest_framework/css/bootstrap.min.css.map.gz
+./backend/staticfiles/rest_framework/css/bootstrap.min.f17d4516b026.css
+./backend/staticfiles/rest_framework/css/bootstrap.min.f17d4516b026.css.gz
+./backend/staticfiles/rest_framework/css/bootstrap-theme.min.1d4b05b397c3.css
+./backend/staticfiles/rest_framework/css/bootstrap-theme.min.1d4b05b397c3.css.gz
+./backend/staticfiles/rest_framework/css/bootstrap-theme.min.css
+./backend/staticfiles/rest_framework/css/bootstrap-theme.min.css.51806092cc05.map
+./backend/staticfiles/rest_framework/css/bootstrap-theme.min.css.51806092cc05.map.gz
+./backend/staticfiles/rest_framework/css/bootstrap-theme.min.css.gz
+./backend/staticfiles/rest_framework/css/bootstrap-theme.min.css.map
+./backend/staticfiles/rest_framework/css/bootstrap-theme.min.css.map.gz
+./backend/staticfiles/rest_framework/css/bootstrap-tweaks.css
+./backend/staticfiles/rest_framework/css/bootstrap-tweaks.css.gz
+./backend/staticfiles/rest_framework/css/bootstrap-tweaks.ee4ee6acf9eb.css
+./backend/staticfiles/rest_framework/css/bootstrap-tweaks.ee4ee6acf9eb.css.gz
+./backend/staticfiles/rest_framework/css/default.789dfb5732d7.css
+./backend/staticfiles/rest_framework/css/default.789dfb5732d7.css.gz
+./backend/staticfiles/rest_framework/css/default.css
+./backend/staticfiles/rest_framework/css/default.css.gz
+./backend/staticfiles/rest_framework/css/font-awesome-4.0.3.c1e1ea213abf.css
+./backend/staticfiles/rest_framework/css/font-awesome-4.0.3.c1e1ea213abf.css.gz
+./backend/staticfiles/rest_framework/css/font-awesome-4.0.3.css
+./backend/staticfiles/rest_framework/css/font-awesome-4.0.3.css.gz
+./backend/staticfiles/rest_framework/css/prettify.a987f72342ee.css
+./backend/staticfiles/rest_framework/css/prettify.a987f72342ee.css.gz
+./backend/staticfiles/rest_framework/css/prettify.css
+./backend/staticfiles/rest_framework/css/prettify.css.gz
+./backend/staticfiles/rest_framework/fonts/fontawesome-webfont.3293616ec0c6.woff
+./backend/staticfiles/rest_framework/fonts/fontawesome-webfont.83e37a11f9d7.svg
+./backend/staticfiles/rest_framework/fonts/fontawesome-webfont.83e37a11f9d7.svg.gz
+./backend/staticfiles/rest_framework/fonts/fontawesome-webfont.8b27bc96115c.eot
+./backend/staticfiles/rest_framework/fonts/fontawesome-webfont.dcb26c7239d8.ttf
+./backend/staticfiles/rest_framework/fonts/fontawesome-webfont.dcb26c7239d8.ttf.gz
+./backend/staticfiles/rest_framework/fonts/fontawesome-webfont.eot
+./backend/staticfiles/rest_framework/fonts/fontawesome-webfont.svg
+./backend/staticfiles/rest_framework/fonts/fontawesome-webfont.svg.gz
+./backend/staticfiles/rest_framework/fonts/fontawesome-webfont.ttf
+./backend/staticfiles/rest_framework/fonts/fontawesome-webfont.ttf.gz
+./backend/staticfiles/rest_framework/fonts/fontawesome-webfont.woff
+./backend/staticfiles/rest_framework/fonts/glyphicons-halflings-regular.08eda92397ae.svg
+./backend/staticfiles/rest_framework/fonts/glyphicons-halflings-regular.08eda92397ae.svg.gz
+./backend/staticfiles/rest_framework/fonts/glyphicons-halflings-regular.448c34a56d69.woff2
+./backend/staticfiles/rest_framework/fonts/glyphicons-halflings-regular.e18bbf611f2a.ttf
+./backend/staticfiles/rest_framework/fonts/glyphicons-halflings-regular.e18bbf611f2a.ttf.gz
+./backend/staticfiles/rest_framework/fonts/glyphicons-halflings-regular.eot
+./backend/staticfiles/rest_framework/fonts/glyphicons-halflings-regular.f4769f9bdb74.eot
+./backend/staticfiles/rest_framework/fonts/glyphicons-halflings-regular.fa2772327f55.woff
+./backend/staticfiles/rest_framework/fonts/glyphicons-halflings-regular.svg
+./backend/staticfiles/rest_framework/fonts/glyphicons-halflings-regular.svg.gz
+./backend/staticfiles/rest_framework/fonts/glyphicons-halflings-regular.ttf
+./backend/staticfiles/rest_framework/fonts/glyphicons-halflings-regular.ttf.gz
+./backend/staticfiles/rest_framework/fonts/glyphicons-halflings-regular.woff
+./backend/staticfiles/rest_framework/fonts/glyphicons-halflings-regular.woff2
+./backend/staticfiles/rest_framework/img/glyphicons-halflings.90233c9067e9.png
+./backend/staticfiles/rest_framework/img/glyphicons-halflings.png
+./backend/staticfiles/rest_framework/img/glyphicons-halflings-white.9bbc6e960299.png
+./backend/staticfiles/rest_framework/img/glyphicons-halflings-white.png
+./backend/staticfiles/rest_framework/img/grid.a4b938cf382b.png
+./backend/staticfiles/rest_framework/img/grid.png
+./backend/staticfiles/rest_framework/js/ajax-form.4e1cdcb7acab.js
+./backend/staticfiles/rest_framework/js/ajax-form.4e1cdcb7acab.js.gz
+./backend/staticfiles/rest_framework/js/ajax-form.js
+./backend/staticfiles/rest_framework/js/ajax-form.js.gz
+./backend/staticfiles/rest_framework/js/bootstrap.min.2f34b630ffe3.js
+./backend/staticfiles/rest_framework/js/bootstrap.min.2f34b630ffe3.js.gz
+./backend/staticfiles/rest_framework/js/bootstrap.min.js
+./backend/staticfiles/rest_framework/js/bootstrap.min.js.gz
+./backend/staticfiles/rest_framework/js/csrf.455080a7b2ce.js
+./backend/staticfiles/rest_framework/js/csrf.455080a7b2ce.js.gz
+./backend/staticfiles/rest_framework/js/csrf.js
+./backend/staticfiles/rest_framework/js/csrf.js.gz
+./backend/staticfiles/rest_framework/js/default.5b08897dbdc3.js
+./backend/staticfiles/rest_framework/js/default.5b08897dbdc3.js.gz
+./backend/staticfiles/rest_framework/js/default.js
+./backend/staticfiles/rest_framework/js/default.js.gz
+./backend/staticfiles/rest_framework/js/jquery-3.7.1.min.2c872dbe60f4.js
+./backend/staticfiles/rest_framework/js/jquery-3.7.1.min.2c872dbe60f4.js.gz
+./backend/staticfiles/rest_framework/js/jquery-3.7.1.min.js
+./backend/staticfiles/rest_framework/js/jquery-3.7.1.min.js.gz
+./backend/staticfiles/rest_framework/js/load-ajax-form.8cdb3a9f3466.js
+./backend/staticfiles/rest_framework/js/load-ajax-form.js
+./backend/staticfiles/rest_framework/js/prettify-min.709bfcc456c6.js
+./backend/staticfiles/rest_framework/js/prettify-min.709bfcc456c6.js.gz
+./backend/staticfiles/rest_framework/js/prettify-min.js
+./backend/staticfiles/rest_framework/js/prettify-min.js.gz
+./backend/staticfiles/staticfiles.json
+./backend/static/js/app.js
+./backend/templates/accounts/login.html
+./backend/templates/base.html
+./backend/templates/base.html.bak
+./backend/templates/clients/detail.html
+./backend/templates/clients/form.html
+./backend/templates/clients/list.html
+./backend/templates/companies/dashboard.html
+./backend/templates/companies/dashboard.html.bak
+./backend/templates/companies/list.html
+./backend/templates/companies/register.html
+./backend/templates/companies/success.html
+./backend/templates/enquiries/detail.html
+./backend/templates/enquiries/followup_form.html
+./backend/templates/enquiries/form.html
+./backend/templates/enquiries/list.html
+./backend/templates/events/detail.html
+./backend/templates/events/form.html
+./backend/templates/events/list.html
+./backend/templates/finance/dashboard.html
+./backend/templates/finance/expense_detail.html
+./backend/templates/finance/expense_form.html
+./backend/templates/finance/expense_list.html
+./backend/templates/finance/payment_detail.html
+./backend/templates/finance/payment_form.html
+./backend/templates/finance/payment_list.html
+./backend/templates/quotations/detail.html
+./backend/templates/quotations/form.html
+./backend/templates/quotations/list.html
+./build.sh
+./docs/API_DOCUMENTATION.md
+./docs/CHANGELOG.md
+./docs/DATABASE_DESIGN.md
+./docs/DECISIONS.md
+./docs/DEVELOPMENT_ROADMAP.md
+./docs/FOLDER_STRUCTURE.txt
+./docs/PROJECT_OVERVIEW.md
+./docs/REQUIREMENTS.md
+./docs/SYSTEM_ARCHITECTURE.md
+./docs/USER_ROLES_AND_PERMISSIONS.md
+./.env
+./.env.example
+./.gitignore
+./PROJECT_CONTEXT.md
+./README.md
+./requirements.txt
+./scripts/backup.sh
+./scripts/run.sh
+./scripts/setup.sh

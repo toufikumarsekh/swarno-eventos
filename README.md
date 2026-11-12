@@ -1,27 +1,40 @@
 # Swarno EventOS
 
-A modular event-management ERP and SaaS-ready platform built with Django.
+Swarno EventOS is a modular, multi-company event-management ERP and SaaS-ready platform built with Django.
+
+## Live Demo
+
+https://swarno-eventos-live.onrender.com
+
+The demo is hosted on Render Free. Its SQLite database uses ephemeral storage, so demo records are not guaranteed to survive restarts or redeployments. Do not use this deployment for permanent business data.
 
 ## Technology Stack
-- Python
-- Django
-- Django REST Framework
-- PostgreSQL
+
+- Python 3.14 (local development environment)
+- Django 5.2.19
+- Django REST Framework 3.18.3
+- PostgreSQL support
+- SQLite support for temporary demos
 - HTML, CSS and JavaScript
 - Django Templates
+- Gunicorn
+- WhiteNoise
+- Render deployment
 
 ## Implemented Modules
-- Authentication
-- Company management
+
+- Email-based authentication
+- Multi-company management
+- Company memberships and roles
 - Client management
-- Enquiries
-- Events
-- Quotations
-- Payments and expenses
+- Enquiry management and follow-ups
+- Event management
+- Quotation management and calculations
 - Finance dashboard
-- Theme switching
+- Payments and expenses
 
 ## Planned Modules
+
 - Vendor management
 - Inventory management
 - Workforce management
@@ -29,22 +42,74 @@ A modular event-management ERP and SaaS-ready platform built with Django.
 - Reports and analytics
 - Audit logs
 
+See [Development Roadmap](docs/DEVELOPMENT_ROADMAP.md).
+
 ## Local Development
 
-Create a virtual environment and install dependencies:
+### 1. Clone the repository
 
-    python3 -m venv .venv
-    source .venv/bin/activate
-    pip install -r requirements.txt
+```bash
+git clone https://github.com/toufikumarsekh/swarno-eventos.git
+cd swarno-eventos
+```
 
-Configure your local environment using `.env.example`, then:
+### 2. Create and activate a virtual environment
 
-    cd backend
-    python manage.py migrate
-    python manage.py createsuperuser
-    python manage.py runserver
+```bash
+python3 -m venv .venv
+source .venv/bin/activate
+```
+
+### 3. Install dependencies
+
+```bash
+pip install -r requirements.txt
+```
+
+### 4. Configure environment variables
+
+Copy `.env.example` to `.env` and configure your local Django secret key and database credentials.
+
+The default local configuration uses PostgreSQL. Make sure the database and database user exist before running migrations.
+
+### 5. Run migrations
+
+```bash
+cd backend
+python manage.py migrate
+```
+
+### 6. Create an administrator
+
+```bash
+python manage.py createsuperuser
+```
+
+The custom user model uses email as its login identifier.
+
+### 7. Start the development server
+
+```bash
+python manage.py runserver
+```
 
 Open http://127.0.0.1:8000/
 
-## Status
-Active development.
+## Deployment
+
+The application is deployed using Render.
+
+- Build command: `./build.sh`
+- Start command: `gunicorn --chdir backend config.wsgi:application`
+- Static files: collected with Django and served through WhiteNoise.
+- Database: SQLite for the current temporary demo deployment.
+
+See [Deployment and Architecture](docs/SYSTEM_ARCHITECTURE.md).
+
+## Repository Structure
+
+See [Folder Structure](docs/FOLDER_STRUCTURE.txt).
+
+## Project Status
+
+Active development. The current deployment is intended for demonstration and testing, not production business operations.

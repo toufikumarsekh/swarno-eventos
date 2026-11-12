@@ -166,3 +166,37 @@
 ### Next
 - Complete visual verification and improve individual page layouts.
 - Vendor Management remains paused during UI improvements.
+
+## [0.7.0] - 2026-11-12
+
+### Added — Demo Deployment
+
+- Added SQLite selection through the `USE_SQLITE` environment variable.
+- Retained PostgreSQL configuration through `DATABASE_URL` or individual database environment variables.
+- Added Render deployment using Gunicorn.
+- Added WhiteNoise static file serving.
+- Added a build script to install dependencies, collect static files and apply migrations.
+- Added `create_demo_account` management command.
+- Added optional demo administrator provisioning using environment variables.
+- Added automatic demo company setup and OWNER membership creation when configured.
+- Deployed the application at https://swarno-eventos-live.onrender.com.
+
+### Verified
+
+- Render build completed successfully.
+- Database migrations completed successfully.
+- Gunicorn started successfully.
+- Hosted homepage and login page responded successfully.
+- Demo administrator login and company access were confirmed by the user.
+
+### Deployment Notes
+
+- The current Render Free deployment uses SQLite without a persistent disk.
+- Demo data is not guaranteed to survive restarts or redeployments.
+- Persistent PostgreSQL is required before production business use.
+
+### Documentation
+
+- Updated README and project overview.
+- Added architecture, requirements, decisions, database, API, roles and roadmap documentation.
+- Updated repository folder structure.
