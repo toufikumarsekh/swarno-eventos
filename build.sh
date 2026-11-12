@@ -5,3 +5,4 @@ pip install -r requirements.txt
 
 python backend/manage.py collectstatic --noinput
 python backend/manage.py migrate
+python backend/manage.py create_demo_account
